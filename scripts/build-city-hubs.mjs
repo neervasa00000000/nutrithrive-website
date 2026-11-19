@@ -35,7 +35,7 @@ const CITIES = [
     faqs: [
       { q: 'How long to Sydney?', a: 'Same-day dispatch from Melbourne before 2pm on business days. Most Sydney metro postcodes: 2–4 business days.' },
       { q: 'Shop in Sydney?', a: 'No retail store — we pack at 15 Europe Street, Truganina VIC and ship Australia-wide.' },
-      { q: 'Best value?', a: 'The 3+1 bundle is $40 for 400g. About $0.26/day. Free shipping from $49. Under $49, shipping is $9.69.' },
+      { q: 'Best value?', a: 'The 3+1 bundle is $44 for 400g. About $0.26/day. Free shipping from $49. Under $49, shipping is $9.69.' },
       { q: 'Any safety tip for capsules?', a: 'If you buy any capsule brand, always check the lot number against current recall notices before use, and ask the seller for a batch lab summary when available. We sell leaf powder with NMI screening.' },
     ],
     review: {
@@ -72,7 +72,7 @@ const CITIES = [
     faqs: [
       { q: 'How long to Brisbane?', a: 'Same-day Melbourne dispatch before 2pm. Brisbane metro, Gold Coast and Sunshine Coast: usually 2–4 business days.' },
       { q: 'Shop in Brisbane?', a: 'No — we ship from Truganina, Melbourne to all QLD postcodes. No Brisbane pickup.' },
-      { q: 'Cheapest way to order?', a: '3+1 bundle is $40 for 400g. Single 100g is $11 + $9.69 if under $49.' },
+      { q: 'Cheapest way to order?', a: '3+1 bundle is $44 for 400g. Single 100g is $11 + $9.69 if under $49.' },
       { q: 'Why is powder clumping?', a: 'Humidity moisture, not a defect. Seal tightly and refrigerate in wet season. Warm the bag before opening.' },
     ],
     review: {
@@ -110,7 +110,7 @@ const CITIES = [
       { q: 'How long to Perth?', a: '3–5 business days to most Perth metro postcodes. Regional WA: 6–9 days. Express Post available at checkout.' },
       { q: 'Shop in Perth?', a: 'No WA store. All orders pack at 15 Europe Street, Truganina VIC.' },
       { q: 'Why slower than the east coast?', a: 'Perth is ~2,700 km from our Melbourne warehouse — Australia Post standard times reflect that.' },
-      { q: 'Best value for Perth?', a: '3+1 bundle is $40 for 400g. Free shipping from $49, so add a small SKU if you want postage off.' },
+      { q: 'Best value for Perth?', a: '3+1 bundle is $44 for 400g. Free shipping from $49, so add a small SKU if you want postage off.' },
     ],
     review: {
       quote: 'The powder from Nutri-Thrive is the greenest in color and tastes way better than other moringa. Pricing is reasonable and shipping was quick!!',
@@ -146,7 +146,7 @@ const CITIES = [
     faqs: [
       { q: 'How long to Adelaide?', a: 'Same-day Melbourne dispatch before 2pm. Adelaide metro: 2–4 business days. Regional SA may add a day or two.' },
       { q: 'Shop in Adelaide?', a: 'Online only — packed in Truganina VIC. We ship to all SA postcodes.' },
-      { q: 'Cheapest order?', a: '3+1 bundle is $40 for 400g. Otherwise $11/100g + $9.69 under $49.' },
+      { q: 'Cheapest order?', a: '3+1 bundle is $44 for 400g. Otherwise $11/100g + $9.69 under $49.' },
       { q: 'How do Adelaide orders ship?', a: 'We pack in Truganina, Melbourne and ship Australia Post to Adelaide. Metro is usually 2–4 business days when you order before 2pm for same-day dispatch. Free shipping on Australian orders $49+.' },
     ],
     review: {

@@ -791,11 +791,20 @@ function applyPdpVariant(id, writeUrl) {
   if (gallery) {
     gallery.classList.toggle("is-wide", id === "moringa-400g" || id === "combo-pack" || id === "moringa-soap-combo");
   }
-  if (bestValue) bestValue.hidden = id !== "moringa-400g";
+  if (bestValue) {
+    const products = window.NT_PRODUCTS || [];
+    const powder100 = products.find((item) => item.id === "moringa-powder");
+    const powder400 = products.find((item) => item.id === "moringa-400g");
+    const unitOf = (item) => (item && Number(item.weight) ? Number(item.price) / Number(item.weight) : 0);
+    bestValue.hidden = !(id === "moringa-400g" && unitOf(powder400) > 0 && unitOf(powder400) < unitOf(powder100));
+  }
   const unit = document.querySelector("[data-pdp-unit-price]");
   if (unit) {
+    const grams = Number(p.weight) || 0;
+    const per100 = grams ? (Number(p.price) / grams) * 100 : 0;
+    const per100Text = Number.isInteger(per100) ? String(per100) : per100.toFixed(2);
     unit.textContent =
-      id === "moringa-400g" ? "$10 per 100g" : id === "moringa-powder" || id === "moringa-200g" ? "$11 per 100g" : "";
+      grams && ["moringa-400g", "moringa-powder", "moringa-200g"].includes(id) ? `$${per100Text} per 100g` : "";
   }
   document.querySelectorAll("[data-select-variant]").forEach((button) => {
     button.classList.toggle("is-selected", button.getAttribute("data-select-variant") === id);

@@ -115,7 +115,7 @@ The leaf is *Murraya koenigii*. In Tamil kitchens it is kari leaf. In Australian
 
 Fresh curry leaf from a suburban tree is excellent in a tadka for dal. It also wilts, blackens, and occupies the crisper. [Fresh vs dried](/blog/fresh-vs-dried-curry-leaves-cooking-comparison-2026) is a real cooking choice. For a finals week where you might cook Sunday, Thursday, Friday, and Saturday, **dried leaf in a 30 g bag** is the pantry version. It does not need a second Woolworths run on Thursday arvo.
 
-If you have never done a tadka: the window is 20–40 seconds. Past that they go bitter. Under-leaf it and you taste only ghee. I pack whole dried leaf. Not powder. Not a "seasoning blend." SKU **NT-CL-30G**. [Dried Curry Leaves, $7 / 30 g](/products/curry-leaves/). Shade-dried. Packed here. Not certified organic.
+If you have never done a tadka: the window is 20–40 seconds. Past that they go bitter. Under-leaf it and you taste only ghee. I pack whole dried leaf. Not powder. Not a "seasoning blend." SKU **NT-CL-30G**. [Dried Curry Leaves, $7 / 30 g](/products/curry-leaves/). Shade-dried. Packed here.
 
 ## The method: one pan, ghee, leaf, pour
 

@@ -31,7 +31,7 @@ const OUT = __dirname;
 const ASSET_VERSION = "20261119-cro-1";
 const FONT_ASSET_VERSION = "20260831-7";
 const PAYMENT_ASSET_VERSION = "20261119-purchase-1";
-const CSS_ASSET_VERSION = "20261119-cro-1";
+const CSS_ASSET_VERSION = "20261119-facts-1";
 const CART_CSS_ASSET_VERSION = "20261023-engagement-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
@@ -167,8 +167,8 @@ const BLOG_SEO_BASELINE = {
     ogTitle: "Moringa at Chemist Warehouse 2026: Powder, Capsules, Price",
   },
   "rosabella-moringa-reviews-legit-or-overhyped-2026": {
-    description: "Rosabella moringa ships to Australia from Ohio. Its Australian prices on 9 Nov 2026, the Feb 2026 lot recall, what its reviews show, and a local pouch.",
-    ogTitle: "Rosabella Moringa in Australia: Price, Recall, Reviews",
+    description: "Rosabella moringa Australia: $52 a bottle, about $217 per 100g, shipped from Ohio. NutriThrive leaf powder is $11 for 100g, packed in Truganina. Checked 9 Nov 2026.",
+    ogTitle: "Rosabella Moringa Australia $52 vs NutriThrive $11 - Price Per 100g Compared",
   },
   "grow-moringa-tree-australia": {
     description: "Can moringa grow where you live in Australia? Climate zones from Perth to Brisbane, frost, pots, seeds and seedlings, plus leaf powder if you cannot grow it.",
@@ -437,10 +437,10 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "why-premium-moringa-costs-11-not-25-value-vs-markup-2026": {
     title: "Moringa Powder Price Australia (Dated $/100g)",
-    description: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $40, with price per 100g. Free AU shipping from $49.",
+    description: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $44, with price per 100g. Free AU shipping from $49.",
     h1: "Moringa Powder Price in Australia (Dated List Prices)",
     ogTitle: "Moringa Powder Price Australia: Dated List Prices",
-    ogDescription: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $40, with price per 100g. Free AU shipping from $49.",
+    ogDescription: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $44, with price per 100g. Free AU shipping from $49.",
     articleSection: "Moringa",
   },
   "high-protein-moringa-recipes-australia-2026": {
@@ -489,12 +489,12 @@ const ARTICLE_SEO_OVERRIDES = {
     articleSection: "Moringa",
   },
   "rosabella-moringa-reviews-legit-or-overhyped-2026": {
-    title: "Rosabella Moringa in Australia: Price, Recall, Reviews",
-    description: "Rosabella moringa ships to Australia from Ohio. Its Australian prices on 9 Nov 2026, the Feb 2026 lot recall, what its reviews show, and a local pouch.",
-    h1: "Rosabella moringa in Australia: where to buy, price, recall and reviews",
-    ogTitle: "Rosabella Moringa in Australia: Price, Recall, Reviews",
-    ogDescription: "Rosabella moringa ships to Australia from Ohio. Its Australian prices on 9 Nov 2026, the Feb 2026 lot recall, what its reviews show, and a local pouch.",
-    ledeHtml: "Rosabella moringa ships to Australia from Ohio. Australian prices on 9 November 2026, the February 2026 lot recall, what its reviews show, and a local pouch.",
+    title: "Rosabella Moringa Australia $52 vs NutriThrive $11 - Price Per 100g Compared",
+    description: "Rosabella moringa Australia: $52 a bottle, about $217 per 100g, shipped from Ohio. NutriThrive leaf powder is $11 for 100g, packed in Truganina. Checked 9 Nov 2026.",
+    h1: "Rosabella Moringa Australia $52 vs NutriThrive $11 - Price Per 100g Compared",
+    ogTitle: "Rosabella Moringa Australia $52 vs NutriThrive $11 - Price Per 100g Compared",
+    ogDescription: "Rosabella moringa Australia: $52 a bottle, about $217 per 100g, shipped from Ohio. NutriThrive leaf powder is $11 for 100g, packed in Truganina. Checked 9 Nov 2026.",
+    ledeHtml: "Rosabella moringa Australia: $52 a bottle, about $217 per 100g, shipped from Ohio. NutriThrive leaf powder is $11 for 100g, packed in Truganina. Checked 9 Nov 2026.",
     articleSection: "Moringa",
   },
   "how-to-brew-darjeeling-tea-perfectly-2026": {
@@ -508,12 +508,12 @@ const ARTICLE_SEO_OVERRIDES = {
     h1: "Does Moringa Have Caffeine? Moringa vs Coffee Australia",
   },
   "how-to-choose-moringa-powder-australia-2026": {
-    title: "Moringa Powder at Coles, Woolworths & Aldi (Nov 2026)",
-    description: "Does Coles, Woolworths or Aldi sell moringa powder? What each listed on 9 Nov 2026, prices per 100g, and who actually ships the pouch.",
-    h1: "Moringa powder at Coles, Woolworths and Aldi: what we found in November 2026",
-    ogTitle: "Moringa Powder at Coles, Woolworths & Aldi (Nov 2026)",
-    ogDescription: "Does Coles, Woolworths or Aldi sell moringa powder? What each listed on 9 Nov 2026, prices per 100g, and who actually ships the pouch.",
-    ledeHtml: "Coles, Woolworths and Aldi online checks on 9 November 2026: who lists moringa powder, what it costs per 100g, and who ships the pouch.",
+    title: "Moringa Powder at Coles, Woolworths & Aldi: None at Coles, $11 Direct",
+    description: "Moringa powder Coles and Aldi: none on 9 Nov 2026. Moringa powder Woolworths Everyday Market was $5.86-$18.75 per 100g. NutriThrive leaf powder is $11 for 100g, packed in Truganina.",
+    h1: "Moringa Powder at Coles, Woolworths & Aldi: None at Coles, $11 Direct",
+    ogTitle: "Moringa Powder at Coles, Woolworths & Aldi: None at Coles, $11 Direct",
+    ogDescription: "Moringa powder Coles and Aldi: none on 9 Nov 2026. Moringa powder Woolworths Everyday Market was $5.86-$18.75 per 100g. NutriThrive leaf powder is $11 for 100g, packed in Truganina.",
+    ledeHtml: "Moringa powder Coles and Aldi: none on 9 Nov 2026. Moringa powder Woolworths Everyday Market was $5.86-$18.75 per 100g. NutriThrive leaf powder is $11 for 100g, packed in Truganina.",
     articleSection: "Moringa",
   },
   "where-to-buy-moringa-leaves-australia": {
@@ -575,7 +575,7 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "moringa-before-after-workout-timing-guide-2026": {
     title: "Moringa Before or After Workout? Timing Guide (AU)",
-    description: "Moringa before or after workout? Timing is habit, not performance. Leaf powder 100g $11, 200g $22, 400g $40. Free AU shipping from $49.",
+    description: "Moringa before or after workout? Timing is habit, not performance. Leaf powder 100g $11, 200g $22, 400g $44. Free AU shipping from $49.",
     h1: "Moringa Before or After Workout? Timing Guide (AU)",
   },
   "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026": {
@@ -844,7 +844,7 @@ function per100Calculator(slug) {
 </aside>`;
 }
 const OBJECTION_BLOCKS = {
-  trust: `<p><strong>Who packs your pouch.</strong> NutriThrive is a small Melbourne family business run by founder Neer Vasa. Our moringa leaf is farm-grown and sun-dried, then packed in Truganina, VIC. We publish an <a href="${LAB_PDF}">NMI lab summary (PDF)</a>. We are not certified, and we say so.</p>`,
+  trust: `<p><strong>Who packs your pouch.</strong> NutriThrive is a small Melbourne family business run by founder Neer Vasa. Our moringa leaf is farm-grown and sun-dried, then packed in Truganina, VIC. We publish an <a href="${LAB_PDF}">NMI lab summary (PDF)</a>.</p>`,
   price: `<p><strong>Compare on price per 100g of leaf.</strong> Capsule labels list the leaf weight per capsule. Multiply it by the capsule count to get grams, then work out the price per 100g. Our leaf powder is ${MORINGA_PRICES.p100} per 100g, ${MORINGA_PRICES.per100In200} per 100g in the 200g pouch and ${MORINGA_PRICES.per100In400} per 100g in the 400g pouch.</p>`,
   taste: `<p><strong>What it tastes like, honestly.</strong> Earthy and green, a bit like spinach, with a slightly bitter finish.</p>`,
   use: `<p><strong>What it is.</strong> One ingredient: farm-grown moringa leaf powder, packed in Truganina.</p>`,
@@ -871,7 +871,7 @@ const MORINGA_OBJECTIONS = {
   "moringa-wellness-shot-recipe-winter-2026": ["stock", "trust"],
 };
 function moringaMidCta(slug) {
-  return `<aside class="article-mid-cta" aria-label="Shop moringa powder"><p><strong>Ready to try it?</strong> Leaf powder 100g ${MORINGA_PRICES.p100} · 200g ${MORINGA_PRICES.p200} · 400g ${MORINGA_PRICES.p400} (best value, ${MORINGA_PRICES.per100In400}/100g). Farm-grown, sun-dried, NMI lab summary, packed in Truganina. Free AU shipping from $49.</p><p class="btn-row"><a class="btn btn-primary" href="/products/moringa-powder/" data-funnel-event="article_mid_product_click" data-article="${esc(slug)}" data-product="moringa-400g">Choose your pouch</a> <a class="btn btn-secondary" href="/products/moringa-powder/100g/" data-funnel-event="article_mid_trial_click" data-article="${esc(slug)}" data-product="moringa-powder">Try 100g for ${MORINGA_PRICES.p100}</a></p></aside>`;
+  return `<aside class="article-mid-cta" aria-label="Shop moringa powder"><p><strong>Ready to try it?</strong> Leaf powder 100g ${MORINGA_PRICES.p100} · 200g ${MORINGA_PRICES.p200} · 400g ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400}/100g). Farm-grown, sun-dried, NMI lab summary, packed in Truganina. Free AU shipping from $49.</p><p class="btn-row"><a class="btn btn-primary" href="/products/moringa-powder/" data-funnel-event="article_mid_product_click" data-article="${esc(slug)}" data-product="moringa-400g">Choose your pouch</a> <a class="btn btn-secondary" href="/products/moringa-powder/100g/" data-funnel-event="article_mid_trial_click" data-article="${esc(slug)}" data-product="moringa-powder">Try 100g for ${MORINGA_PRICES.p100}</a></p></aside>`;
 }
 function stripMidCtas(html) {
   return String(html).replace(/<aside class="article-mid-cta"[\s\S]*?<\/aside>/g, "");
@@ -1251,37 +1251,31 @@ const MORINGA_FEATURED_REVIEW_NAMES = [
   "Priyankari Nath",
 ];
 
-function moringaLeafGuideHtml() {
-  return `<section class="pdp-leaf-guide" aria-labelledby="what-this-powder-is">
-    <h2 id="what-this-powder-is">What this moringa powder is</h2>
-    <p>NutriThrive moringa powder is dried moringa leaf and nothing else. The leaf is grown on our family farm in Gujarat, sun-dried, milled, then packed by us in Truganina, Victoria. It is 100% leaf only. There are no fillers, no binders, no flow agents and no flavourings. We are farm-grown, not certified organic, and the pouch says so.</p>
-    <p>A usual start is 1/4 to 1/2 teaspoon stirred into a smoothie, yoghurt, soup or eggs. Start with the smaller amount and add it to food you already eat. Moringa leaf powder is a nutrient-dense food to use as part of a balanced diet.</p>
-    <p>This batch is NMI lab-tested in Australia. The nutrition summary for batch NT042024 is a PDF on this page. Orders are packed in Truganina VIC 3029 and posted across Australia. The 100g pouch is $11, the 200g pouch is $22, and the 400g pouch is $40, which is $10 per 100g. Australian orders from $49 ship free.</p>
-    <p>If you are pregnant, breastfeeding, on medication, or managing a health condition, talk to your GP before you add it.</p>
-  </section>`;
-}
-
-function moringaBuyerBoxHtml() {
-  return `<section class="pdp-buyer" aria-label="Moringa powder Australia price">
-    <div class="answer-box">
-      <h2>Short answer</h2>
-      <p>Moringa powder in Australia from NutriThrive is $11 for 100g, $22 for 200g, and $40 for 400g ($10 per 100g). It is 100% moringa leaf, farm-grown in Gujarat, sun-dried, NMI lab-tested in Australia and packed in Truganina. Farm-grown, not certified organic.</p>
+function moringaFactsHtml() {
+  return `<section class="pdp-facts" aria-labelledby="what-this-powder-is">
+    <div class="wrap pdp-facts-grid">
+      <div>
+        <h2 id="what-this-powder-is">What this moringa powder is</h2>
+        <p>NutriThrive moringa powder is dried moringa leaf and nothing else. Grown on our family farm in Gujarat, sun-dried, milled, and packed by us in Truganina. It is 100% leaf. No fillers, no binders, no flow agents and no flavourings.</p>
+        <p>Start with 1/4 to 1/2 teaspoon in a smoothie, yoghurt, soup or eggs. This batch is NMI lab-tested in Australia. The nutrition summary for batch NT042024 is a PDF on this page. If you are pregnant, breastfeeding, on medication, or managing a health condition, talk to your GP before you add it.</p>
+      </div>
+      <div class="answer-box">
+        <h2>Short answer</h2>
+        <p>${MORINGA_PRICES.p100} for 100g, ${MORINGA_PRICES.p200} for 200g, and ${MORINGA_PRICES.p400} for 400g (${MORINGA_PRICES.per100In400} per 100g). Free AU shipping from $49.</p>
+        <h3>Price per 100g</h3>
+        <table>
+          <thead><tr><th>Product</th><th>About per 100g</th></tr></thead>
+          <tbody>
+            <tr><td>NutriThrive moringa leaf powder</td><td>$11/100g</td></tr>
+            <tr><td>Rosabella capsules, ships from Ohio</td><td>about $217/100g</td></tr>
+            <tr><td>Chemist Warehouse capsules</td><td>about $132/100g</td></tr>
+          </tbody>
+        </table>
+        <p class="pdp-facts-note">Prices checked 9 Nov 2026. Rosabella was $52 for 60 capsules. Chemist Warehouse listed Forest Super Foods 120 capsules at $79.</p>
+        <p><a href="/products/moringa-powder/">Try a 100g pouch, $11</a></p>
+      </div>
     </div>
-    <p><a href="/products/moringa-powder/">Try a 100g pouch, $11</a></p>
-    <div class="answer-box">
-      <h2>Price per 100g</h2>
-      <table>
-        <thead><tr><th>Product</th><th>About per 100g</th></tr></thead>
-        <tbody>
-          <tr><td>NutriThrive moringa leaf powder</td><td>$11/100g</td></tr>
-          <tr><td>Rosabella capsules, ships from Ohio</td><td>about $217/100g</td></tr>
-          <tr><td>Chemist Warehouse capsules</td><td>about $132/100g</td></tr>
-        </tbody>
-      </table>
-      <p>Prices checked 9 Nov 2026. Rosabella was $52 for 60 capsules. Chemist Warehouse listed Forest Super Foods 120 capsules at $79.</p>
-    </div>
-    <p><a href="/products/moringa-powder/">Try a 100g pouch, $11</a></p>
-    <p>More buying guides: <a href="/blog/moringa-brands-comparison-australia-2026">best moringa powder Australia</a>, <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025">moringa powder Chemist Warehouse</a>, <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">moringa capsules vs powder Australia</a>, <a href="/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026">moringa powder price Australia</a>.</p>
+    <p class="wrap pdp-facts-guides">More buying guides: <a href="/blog/moringa-brands-comparison-australia-2026">best moringa powder Australia</a>, <a href="/blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025">moringa powder Chemist Warehouse</a>, <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">moringa capsules vs powder Australia</a>, <a href="/blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026">moringa powder price Australia</a>.</p>
   </section>`;
 }
 
@@ -1891,29 +1885,38 @@ function writePage(rel, html, destRoot = OUT) {
 function christmasGiftSection() {
   const giftImg = "/assets/images/product_webp/nutrithrive-four-product-gift-pack-main.webp";
   const boxImg = "/assets/images/product_webp/darjeeling-black-tea-100g-main.webp";
+  const giftSizes = "(max-width: 759px) calc(100vw - 36px), (max-width: 1000px) calc(50vw - 40px), 640px";
   return `<section class="section christmas-gifts" id="christmas-gifts" aria-labelledby="christmas-gifts-heading">
   <div class="wrap">
-    <p class="kicker">Christmas</p>
-    <h2 id="christmas-gifts-heading">Gift Pack $35 and Christmas Gift Box $20</h2>
-    <p class="christmas-order-by">Order by 21 Dec in VIC for Christmas.</p>
-    <ul class="christmas-cutoffs">
-      <li>VIC: Mon 21 Dec</li>
-      <li>Metro NSW, ACT, Qld, SA and Tas: Fri 18 Dec</li>
-      <li>WA: Thu 17 Dec</li>
-      <li>NT: Tue 15 Dec</li>
-    </ul>
+    <div class="christmas-head">
+      <div class="christmas-intro">
+        <p class="kicker">Christmas</p>
+        <h2 id="christmas-gifts-heading"><span class="christmas-line">Gift Pack $35 and </span><span class="christmas-line">Christmas Gift Box $20</span></h2>
+        <p class="christmas-order-by">Order by 21 Dec in VIC for Christmas.</p>
+      </div>
+      <ul class="christmas-cutoffs" aria-label="Last order dates for Christmas delivery">
+        <li><span>VIC</span><strong>Mon 21 Dec</strong></li>
+        <li><span>Metro NSW, ACT, Qld, SA and Tas</span><strong>Fri 18 Dec</strong></li>
+        <li><span>WA</span><strong>Thu 17 Dec</strong></li>
+        <li><span>NT</span><strong>Tue 15 Dec</strong></li>
+      </ul>
+    </div>
     <div class="christmas-grid">
       <article class="christmas-card">
-        <a href="/products/gift-pack/"><img src="${giftImg}" ${cardSrcset(giftImg, "(max-width: 760px) calc(100vw - 32px), 280px")} alt="NutriThrive Gift Pack with moringa, tea, curry leaves and soap" width="600" height="600" loading="lazy"></a>
-        <h3><a href="/products/gift-pack/">Gift Pack $35</a></h3>
-        <p>Darjeeling tea, curry leaves, handmade soap and 100g moringa powder. Packed in Truganina.</p>
-        <a class="btn btn-primary" href="/products/gift-pack/">Shop Gift Pack</a>
+        <a class="christmas-card__media" href="/products/gift-pack/"><img src="${giftImg}" ${cardSrcset(giftImg, giftSizes)} alt="NutriThrive Gift Pack with moringa, tea, curry leaves and soap" width="600" height="600" loading="lazy"></a>
+        <div class="christmas-card__body">
+          <h3><a href="/products/gift-pack/"><span>Gift Pack</span><span class="christmas-price">$35</span></a></h3>
+          <p>Darjeeling tea, curry leaves, handmade soap and 100g moringa powder. Packed in Truganina.</p>
+          <a class="btn btn-primary" href="/products/gift-pack/">Shop Gift Pack</a>
+        </div>
       </article>
       <article class="christmas-card">
-        <a href="/products/diwali-gift-box/"><img src="${boxImg}" ${cardSrcset(boxImg, "(max-width: 760px) calc(100vw - 32px), 280px")} alt="Darjeeling tea in the NutriThrive Christmas Gift Box" width="600" height="600" loading="lazy"></a>
-        <h3><a href="/products/diwali-gift-box/">Christmas Gift Box $20</a></h3>
-        <p>Darjeeling tea, curry leaves and handmade soap. No moringa powder in this box.</p>
-        <a class="btn btn-secondary" href="/products/diwali-gift-box/">Shop Christmas Box</a>
+        <a class="christmas-card__media" href="/products/diwali-gift-box/"><img src="${boxImg}" ${cardSrcset(boxImg, giftSizes)} alt="Darjeeling tea in the NutriThrive Christmas Gift Box" width="600" height="600" loading="lazy"></a>
+        <div class="christmas-card__body">
+          <h3><a href="/products/diwali-gift-box/"><span>Christmas Gift Box</span><span class="christmas-price">$20</span></a></h3>
+          <p>Darjeeling tea, curry leaves and handmade soap. No moringa powder in this box.</p>
+          <a class="btn btn-secondary" href="/products/diwali-gift-box/">Shop Christmas Box</a>
+        </div>
       </article>
     </div>
   </div>
@@ -2058,11 +2061,11 @@ const PDP = {
       ["moringa-powder", "moringa-200g", "moringa-400g", "combo-pack", "moringa-soap-combo"].includes(p.id)
     ),
     variantLabels: {
-      "moringa-powder": "100g · $11 · $11 per 100g",
-      "moringa-200g": "200g · $22 · $11 per 100g",
-      "moringa-400g": "400g · $40 · $10 per 100g",
-      "combo-pack": "Combo pack · $17 · Moringa + curry leaves",
-      "moringa-soap-combo": "Powder + soap · $17 · 100g moringa + 95g bar",
+      "moringa-powder": `100g · ${shortMoney(PRODUCTS.find((item) => item.id === "moringa-powder").price)} · ${powderPer100Label(PRODUCTS.find((item) => item.id === "moringa-powder"))}`,
+      "moringa-200g": `200g · ${shortMoney(PRODUCTS.find((item) => item.id === "moringa-200g").price)} · ${powderPer100Label(PRODUCTS.find((item) => item.id === "moringa-200g"))}`,
+      "moringa-400g": `400g · ${shortMoney(PRODUCTS.find((item) => item.id === "moringa-400g").price)} · ${powderPer100Label(PRODUCTS.find((item) => item.id === "moringa-400g"))}`,
+      "combo-pack": `Combo pack · ${shortMoney(PRODUCTS.find((item) => item.id === "combo-pack").price)} · Moringa + curry leaves`,
+      "moringa-soap-combo": `Powder + soap · ${shortMoney(PRODUCTS.find((item) => item.id === "moringa-soap-combo").price)} · 100g moringa + 95g bar`,
     },
     intro:
       "Moringa leaf powder from our family farm in Gujarat, India. Sun-dried, tested by NMI in Australia, and packed by us in Truganina, Melbourne.",
@@ -2112,7 +2115,7 @@ const PDP = {
       [
         "Why isn’t NutriThrive the cheapest moringa powder?",
         {
-          html: `We publish an <strong>NMI lab summary</strong>, sun-dry the leaf, and pack in Truganina. Best value is <strong>400g at $40</strong> ($10/100g). Free AU shipping at <strong>$49</strong>.`,
+          html: `We publish an <strong>NMI lab summary</strong>, sun-dry the leaf, and pack in Truganina. The 400g bundle is <strong>$44</strong> ($11/100g). Free AU shipping at <strong>$49</strong>.`,
         },
       ],
       [
@@ -2534,10 +2537,10 @@ function verifyProductOfferSchema(productSchema, contextLabel = "Product") {
 }
 
 function powderPer100Label(product) {
-  if (!product) return "";
-  if (product.id === "moringa-400g") return "$10 per 100g";
-  if (product.id === "moringa-powder" || product.id === "moringa-200g") return "$11 per 100g";
-  return "";
+  if (!product || !["moringa-400g", "moringa-powder", "moringa-200g"].includes(product.id)) return "";
+  const grams = Number(product.weight) || (product.id === "moringa-400g" ? 400 : product.id === "moringa-200g" ? 200 : 100);
+  const per = (Number(product.price) / grams) * 100;
+  return `$${Number.isInteger(per) ? per : per.toFixed(2)} per 100g`;
 }
 
 function moringaSizePrices(selectedId) {
@@ -2573,26 +2576,30 @@ function bundlePayload(items) {
 function moringaBundleCards() {
   const powder = PRODUCTS.find((item) => item.id === "moringa-400g");
   const soap = PRODUCTS.find((item) => item.id === "moringa-soap-combo");
-  const curry = PRODUCTS.find((item) => item.id === "combo-pack");
-  const card = (title, items) => `<article class="bundle-card">
+  const combo = PRODUCTS.find((item) => item.id === "combo-pack");
+  const card = (title, items) => {
+    const total = items.reduce((sum, item) => sum + Number(item.price), 0);
+    const label = `Add bundle · ${shortMoney(total)}`;
+    return `<article class="bundle-card">
       <h3>${title}</h3>
-      <button class="btn btn-primary" type="button" data-add-bundle="${bundlePayload(items)}" data-label="Add bundle · $57">Add bundle · $57</button>
+      <button class="btn btn-primary" type="button" data-add-bundle="${bundlePayload(items)}" data-label="${label}">${label}</button>
     </article>`;
+  };
   return `<section class="bundle-cards" aria-label="Reach free shipping">
     <h2>Reach FREE shipping</h2>
-    ${card("400g Moringa $40 + Moringa Soap $17 = $57", [powder, soap])}
-    ${card("400g $40 + Curry Leaves $17 = $57", [powder, curry])}
+    ${card(`400g moringa ${shortMoney(powder.price)} + powder and soap ${shortMoney(soap.price)} = ${shortMoney(powder.price + soap.price)}`, [powder, soap])}
+    ${card(`400g moringa ${shortMoney(powder.price)} + moringa and curry ${shortMoney(combo.price)} = ${shortMoney(powder.price + combo.price)}`, [powder, combo])}
   </section>`;
 }
 
 function moringaSubscribeWaitlist(visible) {
   return `<div class="subscribe-waitlist" data-subscribe-waitlist ${visible ? "" : "hidden"}>
     <p class="subscribe-waitlist__offer"><strong>Subscribe &amp; Save 10%</strong></p>
-    <p>400g every 60 days - $36, pause or cancel anytime.</p>
+    <p>400g every 60 days - $39.60, pause or cancel anytime.</p>
     <p>This is a waitlist only. It does not start a subscription or take payment.</p>
     <form class="subscribe-form" name="subscription-waitlist" method="POST" action="/pages/newsletter/thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field" data-subscribe-form>
       <input type="hidden" name="form-name" value="subscription-waitlist">
-      <input type="hidden" name="offer" value="400g every 60 days at $36">
+      <input type="hidden" name="offer" value="400g every 60 days at $39.60">
       <p class="visually-hidden"><label>Don’t fill this in <input name="bot-field"></label></p>
       <label for="subscribe-email">Email</label>
       <div class="subscribe-form__row">
@@ -2656,8 +2663,8 @@ function pdpPage(slug, d) {
   const powder400 = PRODUCTS.find((item) => item.id === "moringa-400g");
   const under49Rate = auSoloShippingRate(powder100?.weight || 100);
   const freeShipFrom = (shippingCostNote().match(/\$\d+/) || ["$49"])[0];
-  if (mainPowder && (powder100?.price !== 11 || powder200?.price !== 22 || powder400?.price !== 40 || under49Rate !== 9.69)) {
-    throw new Error(`Moringa powder prices or the under-$49 shipping rate differ from $11 / $22 / $40 / $9.69. Stopped without changing prices. Got ${powder100?.price}, ${powder200?.price}, ${powder400?.price}, ${under49Rate}.`);
+  if (mainPowder && (powder100?.price !== 11 || powder200?.price !== 22 || powder400?.price !== 44 || Math.round((powder400.price / 4) * 100) !== 1100 || under49Rate !== 9.69)) {
+    throw new Error(`Moringa powder prices or the under-$49 shipping rate differ from $11 / $22 / $44 ($11 per 100g) / $9.69. Stopped without changing prices. Got ${powder100?.price}, ${powder200?.price}, ${powder400?.price}, ${under49Rate}.`);
   }
   const deliveredHtml = "";
   const buyOnline = "";
@@ -2816,7 +2823,7 @@ function pdpPage(slug, d) {
         </div>
         <div class="pdp-buy" id="pdp-buy">
           <h1${freezeHero ? "" : " data-pdp-title"}>${esc(d.h1 || p.name)}</h1>${mainPowder ? `
-          <p class="pdp-intro">Buy moringa powder in Australia for $11 per 100g. The 100g pouch is $11, the 200g pouch is $22, and the 400g pouch is $40 ($10 per 100g). It is 100% moringa leaf only, with no fillers, no binders and no flow agents. Farm-grown, not certified organic. Sun-dried, NMI lab-tested in Australia and packed in Truganina, Melbourne.</p>` : ""}
+          <p class="pdp-intro">Buy moringa powder in Australia for ${MORINGA_PRICES.p100} per 100g. The 100g pouch is ${MORINGA_PRICES.p100}, the 200g pouch is ${MORINGA_PRICES.p200}, and the 400g pouch is ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400} per 100g). It is 100% moringa leaf only, with no fillers, no binders and no flow agents. It is farm-grown, sun-dried, NMI lab-tested in Australia and packed in Truganina, Melbourne.</p>` : ""}
           <p class="stock-status"><span aria-hidden="true"></span> ${slug === "moringa-powder" ? "In Stock - Packed in Truganina" : "In stock · ready to dispatch"}</p>
           ${slug === "moringa-powder" ? `<p class="dispatch-note">Order before 2pm for same-day dispatch</p>` : ""}
           <p class="pdp-price" data-pdp-price>${money(buyProduct.price)}${buyProduct.was && buyProduct.was > buyProduct.price ? ` <s>${money(buyProduct.was)}</s>` : ""}</p>
@@ -2845,12 +2852,11 @@ function pdpPage(slug, d) {
             </div>
             ${factsLine}
           </div>
-          ${mainPowder ? moringaLeafGuideHtml() : ""}
-          ${mainPowder ? moringaBuyerBoxHtml() : ""}
           ${slug === "moringa-powder" && !mainPowder ? `<p class="pdp-intro"${freezeHero ? "" : " data-pdp-intro"}>${esc(d.intro)}</p>` : ""}
 
         </div>
       </section>
+      ${mainPowder ? moringaFactsHtml() : ""}
       ${slug === "moringa-powder" ? christmasGiftSection() : ""}
       <div class="pdp-sticky-atc" data-pdp-sticky-atc hidden role="region" aria-label="Quick add to cart">
         <div class="pdp-sticky-atc__info">
@@ -3436,7 +3442,7 @@ function privacyPage() {
         <p><strong>Wrong location selection:</strong> If you select the wrong country (for example, selecting "Australia" for a US address) to bypass shipping costs or by error, NutriThrive is not responsible for the order. We reserve the right to cancel the order or refuse delivery. We are not liable for lost goods due to incorrect address details provided by the customer.</p>
 
         <h2>Terms of Service and Disclaimer</h2>
-        <h3>1. Product nature (not certified organic)</h3>
+        <h3>1. Product nature</h3>
         <p><strong>Natural product:</strong> NutriThrive products are sold as "Natural" products derived from natural ingredients.</p>
         <p><strong>Not certified organic:</strong> We explicitly state that our products are NOT "Certified Organic". We do not hold organic certification.</p>
         <p><strong>Waiver of claims:</strong> NutriThrive makes no representations or warranties of organic certification. By purchasing, you acknowledge the product is not certified organic and agree to release NutriThrive from any liability, claims, or disputes asserting otherwise.</p>
@@ -3470,13 +3476,11 @@ function cartPage() {
 <script defer>document.addEventListener("DOMContentLoaded",function(){if(window.NT&&typeof window.NT.renderCart==="function")window.NT.renderCart();});</script>`,
     robots: "noindex, nofollow",
     main: `
-      ${shipBarHtml()}
       <section class="page-intro wrap cart-intro">
         <div>
           <p class="eyebrow">Your order</p>
           <h1>Shopping cart</h1>
         </div>
-        <a class="cart-continue" href="${shop}">Continue shopping <span aria-hidden="true">→</span></a>
       </section>
       <section class="wrap cart-layout" id="cart-layout">
         <div class="cart-main">
@@ -3847,7 +3851,7 @@ function melbournePage() {
     ["Do you have handmade soap in Melbourne?", "Yes, $7 for a 95g bar."],
     [
       "Do you sell moringa powder in Melbourne?",
-      "Yes. Sun-dried moringa leaf powder, 100g $11, 200g $22 or 400g $40, packed in Truganina. Delivery or pickup by arrangement.",
+      "Yes. Sun-dried moringa leaf powder, 100g $11, 200g $22 or 400g $44, packed in Truganina. Delivery or pickup by arrangement.",
     ],
   ];
   const faqSchema = {
@@ -4661,7 +4665,7 @@ function articleEndCta(slug) {
   if (slug === "moringa-vs-ashwagandha-comparison-2026") {
     return `<aside class="answer-box" aria-label="Moringa powder price">
       <h2>Price, if you want the leaf</h2>
-      <p>NutriThrive moringa leaf powder is $11 for 100g, $22 for 200g and $40 for 400g ($10 per 100g). Rosabella capsules were about $217/100g and Chemist Warehouse capsules about $132/100g when checked on 9 Nov 2026. ${price}. ${shop}. See <a href="/blog/moringa-brands-comparison-australia-2026">best moringa powder Australia</a>.</p>
+      <p>NutriThrive moringa leaf powder is $11 for 100g, $22 for 200g and $44 for 400g ($11 per 100g). Rosabella capsules were about $217/100g and Chemist Warehouse capsules about $132/100g when checked on 9 Nov 2026. ${price}. ${shop}. See <a href="/blog/moringa-brands-comparison-australia-2026">best moringa powder Australia</a>.</p>
     </aside>`;
   }
   if (slug === "why-premium-moringa-costs-11-not-25-value-vs-markup-2026") {
@@ -4694,6 +4698,16 @@ const FORCE_BLOG_SEO = {
   "what-does-moringa-powder-taste-like-honest-guide-2026": {
     title: "What Does Moringa Powder Taste Like? Honest Guide + How to Hide the Taste",
     description: "Moringa powder tastes earthy and green, a bit like spinach, with a bitter finish. How to hide the taste in smoothies, yoghurt and soup, plus a 100g pouch for $11.",
+  },
+  "rosabella-moringa-reviews-legit-or-overhyped-2026": {
+    title: "Rosabella Moringa Australia $52 vs NutriThrive $11 - Price Per 100g Compared",
+    h1: "Rosabella Moringa Australia $52 vs NutriThrive $11 - Price Per 100g Compared",
+    description: "Rosabella moringa Australia: $52 a bottle, about $217 per 100g, shipped from Ohio. NutriThrive leaf powder is $11 for 100g, packed in Truganina. Checked 9 Nov 2026.",
+  },
+  "how-to-choose-moringa-powder-australia-2026": {
+    title: "Moringa Powder at Coles, Woolworths & Aldi: None at Coles, $11 Direct",
+    h1: "Moringa Powder at Coles, Woolworths & Aldi: None at Coles, $11 Direct",
+    description: "Moringa powder Coles and Aldi: none on 9 Nov 2026. Moringa powder Woolworths Everyday Market was $5.86-$18.75 per 100g. NutriThrive leaf powder is $11 for 100g, packed in Truganina.",
   },
 };
 
@@ -4861,6 +4875,8 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
         ? `<p class="article-next-step"><a href="/products/diwali-gift-box/" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="diwali-gift-box">Shop Christmas gift box</a></p>`
         : meta.slug === "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"
         ? `<p class="article-next-step"><a href="/products/moringa-powder/">Try a 100g pouch, $11</a>. ${powderAnchors}</p>`
+        : meta.slug === "rosabella-moringa-reviews-legit-or-overhyped-2026"
+        ? `<p class="article-next-step"><a href="/products/moringa-powder/">Try a 100g pouch, $11</a>. ${powderAnchors} · <a href="/blog/moringa-brands-comparison-australia-2026">Best moringa powder Australia</a></p>`
         : `<p class="article-next-step"><a href="/products/moringa-powder/">Try a 100g pouch, ${MORINGA_PRICES.p100}</a>. ${powderAnchors}</p>`)
     : "";
   if (firstScreen && relatedNav && !proseHtml.includes('class="article-related"')) proseHtml = insertAfterFirstH2Section(proseHtml, relatedNav);
@@ -4903,10 +4919,9 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     ? `
           <div class="quick-verdict">
             <h2>Our verdict: the best moringa powder in Australia for 2026</h2>
-            <p><strong>Best overall for value and freshness: NutriThrive moringa leaf powder.</strong> It is farm-grown on our family farm in Gujarat, sun-dried, lab-tested by NMI in Australia and packed in Truganina, VIC. It costs $11 per 100g, or $10 per 100g in the 400g pouch, and shipping is free across Australia on orders from $49.</p>
+            <p><strong>Best overall for value and freshness: NutriThrive moringa leaf powder.</strong> It is farm-grown on our family farm in Gujarat, sun-dried, lab-tested by NMI in Australia and packed in Truganina, VIC. It costs $11 per 100g, including the 400g pouch, and shipping is free across Australia on orders from $49.</p>
             <p><a href="/products/moringa-powder/">Try a 100g pouch, $11</a>. <a href="/products/moringa-powder/">moringa powder $11</a> · <a href="/products/moringa-powder/">Shop moringa powder</a></p>
             <p><strong>Best if you want capsules:</strong> a pharmacy capsule brand, such as those on the Chemist Warehouse shelf. They are easy to carry, but you pay far more per gram of leaf.</p>
-            <p><strong>Best if certification is your priority:</strong> a certified brand from a specialist moringa seller. Check the certificate number on the pack.</p>
             <p>Yes, we sell one of these. That is why every brand below is judged on the same label facts, and why you can check each one yourself.</p>
           </div>`
     : meta.slug === "moringa-patches-australia-review-do-they-work"
@@ -4922,7 +4937,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           </div>
           <aside class="answer-box" aria-label="Patches compared with powder">
             <h2>Patches vs powder</h2>
-            <p>Patches vs powder: a patch is a small dose, powder is $0.11/g. NutriThrive <a href="/products/moringa-powder/">moringa powder $11</a> for 100g, and 400g is $40. <a href="/products/moringa-powder/">Shop moringa powder</a>, or read <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">moringa capsules vs powder</a>.</p>
+            <p>Patches vs powder: a patch is a small dose, powder is $0.11/g. NutriThrive <a href="/products/moringa-powder/">moringa powder $11</a> for 100g, and 400g is $44. <a href="/products/moringa-powder/">Shop moringa powder</a>, or read <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">moringa capsules vs powder</a>.</p>
           </aside>`
     : "";
   const dosageSchemas = meta.slug === "how-much-moringa-powder-per-day-dosage-guide"

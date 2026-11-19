@@ -89,8 +89,8 @@ const approvedSeoChanges = {
     description: "$40 for 60 capsules at 500mg is 30g of leaf, about $1.33/g. NutriThrive at $11/100g is $0.11/g. Compare capsules vs powder in Australia.",
   },
   "blog/how-to-choose-moringa-powder-australia-2026.html": {
-    title: "How to Choose Moringa Powder in Australia | Lab Checklist",
-    description: "How to choose moringa powder in Australia: colour, single-ingredient labels, lab tests, shade-dried vs sun-dried. NMI-tested from Truganina.",
+    title: "Moringa Powder at Coles, Woolworths & Aldi: None at Coles, $11 Direct",
+    description: "Moringa powder Coles and Aldi: none on 9 Nov 2026. Moringa powder Woolworths Everyday Market was $5.86-$18.75 per 100g. NutriThrive leaf powder is $11 for 100g, packed in Truganina.",
   },
   "blog/dried-curry-leaves-australia-guide.html": {
     title: "Dried Curry Leaves at Coles, Woolworths & Aldi (2026)",
@@ -116,7 +116,7 @@ const approvedSeoChanges = {
   },
   "blog/moringa-before-after-workout-timing-guide-2026.html": {
     title: "Moringa Before or After Workout? Timing Guide (Australia)",
-  description: "Moringa before or after workout? Timing is habit, not performance. Leaf powder 100g $11, 200g $22, 400g $40. Free AU shipping from $49.",
+  description: "Moringa before or after workout? Timing is habit, not performance. Leaf powder 100g $11, 200g $22, 400g $44. Free AU shipping from $49.",
   },
   "blog/moringa-vs-whey-protein-comparison-2026.html": {
     title: "Moringa vs Whey Protein: Cost, Protein &amp; Everyday Use (AU)",
@@ -164,8 +164,8 @@ const approvedSeoChanges = {
     description: "Moringa leaf powder and berberine in Australia: what published science covers, product forms, and TGA food context, not medical advice. Ask your GP.",
   },
   "blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html": {
-    title: "Rosabella Moringa in Australia: Price, Recall, Reviews",
-    description: "Rosabella moringa ships to Australia from Ohio. Its Australian prices on 9 Nov 2026, the Feb 2026 lot recall, what its reviews show, and a local pouch.",
+    title: "Rosabella Moringa Australia $52 vs NutriThrive $11 - Price Per 100g Compared",
+    description: "Rosabella moringa Australia: $52 a bottle, about $217 per 100g, shipped from Ohio. NutriThrive leaf powder is $11 for 100g, packed in Truganina. Checked 9 Nov 2026.",
   },
   "blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html": {
     title: "Moringa Powder Chemist Warehouse vs NutriThrive $11 - Price Per 100g Compared",
@@ -176,7 +176,7 @@ const approvedSeoChanges = {
     description: "A short recipe for a small moringa drink you mix at home with lemon and ginger. We sell the leaf powder only: 100g, 200g or 400g pouches.",
   },
   "blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026.html": {
-  description: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $40, with price per 100g. Free AU shipping from $49.",
+  description: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $44, with price per 100g. Free AU shipping from $49.",
   },
   "blog/afl-finals-snacks-curry-leaf-tadka.html": {
     description: "AFL finals snacks without party pies: curry-leaf tadka over nuts or popcorn. Dried kari leaf 30g from Truganina at $7, ready before Week 2 Thursday.",
