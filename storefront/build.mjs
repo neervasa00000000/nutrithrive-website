@@ -35,6 +35,7 @@ const CSS_ASSET_VERSION = "20261119-shopping-2";
 const CART_CSS_ASSET_VERSION = "20261023-engagement-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
 const DESK_SEO = JSON.parse(fs.readFileSync(path.join(__dirname, "seo-desk-2026-10-15.json"), "utf8"));
+const MONEY_BLOG_EDITS = JSON.parse(fs.readFileSync(path.join(__dirname, "content/money-blogs.json"), "utf8"));
 function deskSeo(urlPath) {
   if (!urlPath) return {};
   return DESK_SEO[urlPath] || DESK_SEO[urlPath.endsWith("/") ? urlPath.slice(0, -1) : `${urlPath}/`] || {};
@@ -1858,6 +1859,11 @@ ${extraFoot}
 
 function writePage(rel, html, destRoot = OUT) {
   if (process.env.STOREFRONT_PAGES_ONLY === "1" && /^(blog|journal)\//.test(rel)) return;
+  // Keep protected published blog snapshots stable during unrelated releases.
+  const protectedSlug = rel.match(/^blog\/([^/]+)\.html$/)?.[1];
+  if (LIVE_MODE && destRoot === SITE && protectedSlug &&
+      (NOINDEX_BLOG_SLUGS.has(protectedSlug) || ["moringa-patches-australia-review-do-they-work", "diwali-hampers-australia"].includes(protectedSlug)) &&
+      process.env.STOREFRONT_REFRESH_PROTECTED_BLOGS !== "1" && fs.existsSync(path.join(destRoot, rel))) return;
   // Preserve existing HOLD articles during the October growth pass.
   // The kids dosage guide is an exception: its title, meta and end CTA are updated in this build.
   const heldException = /is-moringa-safe-for-children-kids-dosage-2026/.test(rel);
@@ -4342,6 +4348,8 @@ function extractFaqPageSchema(slug) {
 }
 
 function extractArticleProse(slug, fallbackHtml) {
+  const moneyBlog = MONEY_BLOG_EDITS[slug];
+  if (moneyBlog) return fs.readFileSync(path.join(__dirname, "content", moneyBlog.source), "utf8");
   const file = path.join(SITE, "blog", `${slug}.html`);
   let html = "";
   // Prefer intentional working-tree edits. Git HEAD remains a fallback for a
@@ -4629,6 +4637,11 @@ function articleEndCta(slug) {
 }
 
 const FORCE_BLOG_SEO = {
+  "moringa-powder-hair-growth-australia-2026": {
+    title: "Moringa Powder for Hair Growth Australia: What It Can & Cannot Do",
+    h1: "Moringa Powder for Hair Growth in Australia",
+    description: "Moringa powder for hair growth in Australia? Searches are up 150% in 2026. It is not a hair-loss treatment. It is a food that adds iron, zinc, vitamin A and protein to your diet. NutriThrive leaf powder is $11 for 100g, packed in Truganina."
+  },
   "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025": {
     title: "Moringa Powder Chemist Warehouse vs NutriThrive $11 - Price Per 100g Compared",
     h1: "Moringa Powder Chemist Warehouse vs NutriThrive (2026)",
@@ -4666,11 +4679,13 @@ const FORCE_BLOG_SEO = {
 };
 
 function articlePage(meta, prose, allArticles, liveSeo = null) {
+  const moneyBlog = MONEY_BLOG_EDITS[meta.slug];
+  if (moneyBlog) allArticles = allArticles.filter(article => !NOINDEX_BLOG_SLUGS.has(article.slug) && !JOURNAL_REDIRECTS[article.slug] && !JOURNAL_EXTERNAL_REDIRECTS[article.slug] && !REDIRECTED_JOURNAL_SLUGS.has(article.slug));
   const shop = journalProduct(meta) || PRODUCTS[0];
   const seoOverride = ARTICLE_SEO_OVERRIDES[meta.slug];
   const catalogTitle = humanCopy(stripTags(meta.seoTitle || meta.title));
   const desk = deskSeo(`/blog/${meta.slug}`);
-  const forcedSeo = FORCE_BLOG_SEO[meta.slug] || null;
+  const forcedSeo = moneyBlog || FORCE_BLOG_SEO[meta.slug] || null;
   let title = forcedSeo?.title || liveSeo?.title || desk.title || seoOverride?.title || catalogTitle;
   let displayH1 = forcedSeo?.h1 || liveSeo?.h1 || desk.h1 || seoOverride?.h1 || articleDisplayH1(meta, liveSeo, title);
   const seoBaseline = BLOG_SEO_BASELINE[meta.slug];
@@ -4730,9 +4745,20 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const structuredWithModified = preservedStructuredData
     ? preservedStructuredData.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (match, raw) => {
         try {
-          const data = JSON.parse(raw);
+          const data = JSON.parse(moneyBlog ? raw.replace(/400g moringa bundle/gi, "400g moringa pouch").replace(/400g bundle/gi, "400g pouch") : raw);
+          if (moneyBlog?.faqs && data["@type"] === "FAQPage") {
+            data.mainEntity = moneyBlog.faqs.map(([name, text]) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text } }));
+            return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
+          }
+          if (moneyBlog && data["@type"] === "FAQPage") return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
             if (data["@type"] === "Article" || data["@type"] === "BlogPosting") {
             if (data.author && typeof data.author === "object" && !Array.isArray(data.author)) data.author.name = "Neer Vasa, NutriThrive founder";
+            if (moneyBlog) {
+              data.headline = displayH1;
+              if (data.name) data.name = displayH1;
+              data.description = description;
+              return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
+            }
             if (seoBaseline) {
               data.headline = displayH1;
               if (data.name) data.name = displayH1;
@@ -4784,7 +4810,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   } : null;
   const sourcePath = path.join(SITE, "blog", `${meta.slug}.html`);
   const sourceHtml = fs.existsSync(sourcePath) ? fs.readFileSync(sourcePath, "utf8") : "";
-  const stableProse = reattachLiftedAnswer(sourceHtml, stripRelatedNavs(prose));
+  const stableProse = moneyBlog ? prose : reattachLiftedAnswer(sourceHtml, stripRelatedNavs(prose));
   const enhancedProse = articleProseWithContents(stableProse, meta.slug);
   const conversionPath = ARTICLE_CONVERSION_PATHS[meta.slug] || {};
   const isMoringaPowder = ["moringa-powder", "moringa-200g", "moringa-400g"].includes(shop.id);
@@ -4792,7 +4818,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const objectionHtml = isMoringaSales && MORINGA_OBJECTIONS[meta.slug]
     ? `<aside class="article-objections" aria-label="Before you buy">${MORINGA_OBJECTIONS[meta.slug].map((key) => OBJECTION_BLOCKS[key]).join("")}</aside>`
     : "";
-  const firstScreen = FIRST_SCREEN_SLUGS.has(meta.slug);
+  const firstScreen = !moneyBlog && FIRST_SCREEN_SLUGS.has(meta.slug);
   const skipAnswerLift = meta.slug === "moringa-patches-australia-review-do-they-work" || meta.slug === "moringa-brands-comparison-australia-2026";
   let proseHtml = stripMidCtas(enhancedProse.html);
   let liftedAnswer = "";
@@ -4873,7 +4899,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     ? `
           <div class="quick-verdict">
             <h2>Our verdict: the best moringa powder in Australia for 2026</h2>
-            <p><strong>Best overall for value and freshness: NutriThrive moringa leaf powder.</strong> It is farm-grown on our family farm in Gujarat, sun-dried, lab-tested by NMI in Australia and packed in Truganina, VIC. It costs $11 per 100g, including the 400g pouch, and shipping is free across Australia on orders from $49.</p>
+            <p><strong>Best overall for value and freshness: NutriThrive moringa leaf powder.</strong> It is farm-grown on our family farm in Gujarat, sun-dried, lab-tested by NMI in Australia and packed in Truganina, VIC. The 100g pouch is ${MORINGA_PRICES.p100}, 200g is ${MORINGA_PRICES.p200}, and 400g is ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400} per 100g, our best value). Shipping is free across Australia on orders from $49.</p>
             <p><a href="/products/moringa-powder/">Try a 100g pouch, $11</a>. <a href="/products/moringa-powder/">moringa powder $11</a> · <a href="/products/moringa-powder/">Shop moringa powder</a></p>
             <p><strong>Best if you want capsules:</strong> a pharmacy capsule brand, such as those on the Chemist Warehouse shelf. They are easy to carry, but you pay far more per gram of leaf.</p>
             <p>Yes, we sell one of these. That is why every brand below is judged on the same label facts, and why you can check each one yourself.</p>
@@ -4897,7 +4923,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
   const dosageSchemas = meta.slug === "how-much-moringa-powder-per-day-dosage-guide"
     ? dosageGuideHead(url, breadcrumbItems)
     : "";
-  return layout({
+  const html = layout({
     title,
     description,
     canonicalPath: LIVE_MODE ? `/blog/${meta.slug}` : `/journal/${meta.slug}`,
@@ -4908,8 +4934,8 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
     ogImage: socialImage,
     ogImageWidth: seoOverride?.ogImageWidth || 1200,
     ogImageHeight: seoOverride?.ogImageHeight || 630,
-    ogTitle: (pageSeo.has(meta.slug) && title) || seoBaseline?.ogTitle || desk.title || seoOverride?.ogTitle,
-    ogDescription: (pageSeo.has(meta.slug) && description) || seoBaseline?.description || desk.description || seoOverride?.ogDescription,
+    ogTitle: moneyBlog?.title || (pageSeo.has(meta.slug) && title) || seoBaseline?.ogTitle || desk.title || seoOverride?.ogTitle,
+    ogDescription: moneyBlog?.description || (pageSeo.has(meta.slug) && description) || seoBaseline?.description || desk.description || seoOverride?.ogDescription,
     robots: NOINDEX_BLOG_SLUGS.has(meta.slug) ? "noindex, follow" : undefined,
     extraHead: `<meta name="author" content="Neer Vasa, NutriThrive founder">
   <meta property="article:author" content="Neer Vasa, NutriThrive founder">
@@ -4923,15 +4949,17 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
       </nav>
       <section class="wrap article-layout">
         <article data-article-slug="${esc(meta.slug)}">
-          <p class="meta-line">${esc(topic)}${seoBaseline ? ` · Last updated: <time datetime="${BLOG_SEO_UPDATED}">23 October 2026</time>` : `${dates.publishedIso ? ` · Published <time datetime="${dates.publishedIso}">${dates.publishedLabel}</time>` : ""}${dates.modifiedIso && dates.modifiedIso !== dates.publishedIso ? ` · Updated <time datetime="${dates.modifiedIso}">${dates.modifiedLabel}</time>` : ""}`} · By <a href="${r.about}#founder" rel="author">Neer Vasa, NutriThrive founder</a></p>
+          ${moneyBlog ? `<p class="meta-line">${moneyBlog.bylineHtml}</p>` : `<p class="meta-line">${esc(topic)}${seoBaseline ? ` · Last updated: <time datetime="${BLOG_SEO_UPDATED}">23 October 2026</time>` : `${dates.publishedIso ? ` · Published <time datetime="${dates.publishedIso}">${dates.publishedLabel}</time>` : ""}${dates.modifiedIso && dates.modifiedIso !== dates.publishedIso ? ` · Updated <time datetime="${dates.modifiedIso}">${dates.modifiedLabel}</time>` : ""}`} · By <a href="${r.about}#founder" rel="author">Neer Vasa, NutriThrive founder</a></p>`}
           <h1>${esc(displayH1)}</h1>${underH1}
-          ${liftedAnswer}
+          ${moneyBlog?.disclaimerHtml || ""}
+          ${moneyBlog ? moneyBlog.shortAnswerHtml : liftedAnswer}
+          ${moneyBlog?.ctaHtml || ""}
           ${nextStep}
-          <p class="lede">${ledeHtml}</p>
-          ${meta.slug === "moringa-vs-ashwagandha-comparison-2026" ? articleEndCta(meta.slug) : ""}
+          ${moneyBlog ? "" : `<p class="lede">${ledeHtml}</p>`}
+          ${!moneyBlog && meta.slug === "moringa-vs-ashwagandha-comparison-2026" ? articleEndCta(meta.slug) : ""}
           <div class="article-hero"><img src="${heroSrc}" alt="${esc(seoOverride?.heroAlt || title)}" width="${seoOverride?.heroWidth || 1200}" height="${seoOverride?.heroHeight || 675}" fetchpriority="high"></div>
           ${seoOverride?.heroCaptionHtml || ""}
-          ${firstScreen ? "" : `<aside class="article-quick-product" aria-label="Related NutriThrive product">
+          ${moneyBlog || firstScreen ? "" : `<aside class="article-quick-product" aria-label="Related NutriThrive product">
             <div><span>Related product</span><strong>${esc(shownQuickLabel)}</strong>${isMoringaPowder && !isHealth ? `<small class="article-quick-facts">100g ${MORINGA_PRICES.p100} · 400g ${MORINGA_PRICES.p400} (${MORINGA_PRICES.per100In400}/100g) · <a href="${LAB_PDF}" data-funnel-event="article_lab_click" data-article="${esc(meta.slug)}">NMI lab report</a></small>` : ""}</div>
             <a href="${shownQuickHref}" data-funnel-event="article_early_product_click" data-article="${esc(meta.slug)}" data-product="${esc(firstScreen && isMoringaPowder ? "moringa-powder" : shop.id)}">${esc(cta)}</a>
           </aside>`}
@@ -4941,10 +4969,10 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
             <p>${meta.slug === "how-to-choose-moringa-powder-australia-2026" ? "We sell moringa leaf powder, so read this as a seller's guide and check our sources. The short version: look for one ingredient, a bright green colour, a readable batch date and lab paperwork you can open. Our powder is grown on our family farm in Gujarat, sun-dried and packed in Truganina, Melbourne." : "We checked public product information, available labels, prices and cited evidence. NutriThrive sells moringa powder, so we have a commercial interest in this comparison. Use the linked sources and product details to check our conclusions."}</p>
           </aside>
           ` : ""}<div class="prose">${proseHtml}</div>
-          ${isHealth ? `<aside class="article-safety"><p>This is general food information. If you're pregnant, breastfeeding, on medication or managing a health condition, check with your GP first.</p></aside>` : ""}
-          ${meta.slug === "moringa-vs-ashwagandha-comparison-2026" ? "" : articleEndCta(meta.slug)}
-          ${isMoringaPowder && !isHealth && CALC_SLUGS.has(meta.slug) ? per100Calculator(meta.slug) : ""}
-          ${objectionHtml}
+          ${!moneyBlog && isHealth ? `<aside class="article-safety"><p>This is general food information. If you're pregnant, breastfeeding, on medication or managing a health condition, check with your GP first.</p></aside>` : ""}
+          ${moneyBlog || meta.slug === "moringa-vs-ashwagandha-comparison-2026" ? "" : articleEndCta(meta.slug)}
+          ${!moneyBlog && isMoringaPowder && !isHealth && CALC_SLUGS.has(meta.slug) ? per100Calculator(meta.slug) : ""}
+          ${moneyBlog ? "" : objectionHtml}
           ${diwaliGiftListingOpen() && ["moringa-patches-australia-review-do-they-work", "moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025"].includes(meta.slug) ? DIWALI_GROWTH_LINKS : ""}
           ${firstScreen ? "" : relatedNav}
           <aside class="article-author">
@@ -4955,6 +4983,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
         </article>
       </section>`,
   });
+  return moneyBlog ? html.replace(/^[ \t]+$/gm, "") : html;
 }
 
 function redirectPage(fromSlug, toSlug, seo = {}) {
@@ -5135,6 +5164,18 @@ function copyLiveUiAssets() {
 }
 
 function main() {
+  if (LIVE_MODE && process.env.STOREFRONT_MONEY_BLOGS_ONLY === "1") {
+    const articles = loadArticles().map(article => ({ ...article, image: articleImage(article) }));
+    for (const slug of Object.keys(MONEY_BLOG_EDITS)) {
+      if (NOINDEX_BLOG_SLUGS.has(slug)) throw new Error(`Protected noindex blog: ${slug}`);
+      const meta = articles.find(article => article.slug === slug);
+      if (!meta) throw new Error(`Unknown money blog: ${slug}`);
+      const file = path.join(SITE, "blog", `${slug}.html`);
+      emit(`blog/${slug}.html`, articlePage(meta, extractArticleProse(slug, ""), articles, extractSeo(file)), `blog/${slug}.html`);
+    }
+    console.log("Rebuilt the seven money blogs only; no other pages or assets written.");
+    return;
+  }
   if (LIVE_PAGES.has("cities") || LIVE_PAGES.has("shipping")) {
     if (LIVE_PAGES.has("cities")) {
       emitCityLandings();

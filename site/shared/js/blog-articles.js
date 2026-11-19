@@ -1,4 +1,4 @@
-/** Auto-generated — 71 blog articles. Run: node scripts/apply-blog-launch-schedule.mjs */
+/** Auto-generated — 72 blog articles. Run: node scripts/build-live-v2.mjs */
 window.NT_BLOG_ARTICLES = [
   {
     "slug": "afl-finals-snacks-curry-leaf-tadka",
@@ -185,7 +185,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "grow-moringa-tree-australia",
     "title": "How to grow a moringa tree in Australia, from a family that farms it",
-    "description": "Can moringa grow in Perth, Brisbane or Melbourne? Frost-free zones, growing it in a 40\u201360 L pot with winter shelter, and starting from seed or seedling.",
+    "description": "Can moringa grow in Perth, Brisbane or Melbourne? Frost-free zones, growing it in a 40–60 L pot with winter shelter, and starting from seed or seedling.",
     "category": "Wellness",
     "href": "/blog/grow-moringa-tree-australia"
   },
@@ -234,7 +234,7 @@ window.NT_BLOG_ARTICLES = [
   {
     "slug": "how-to-brew-darjeeling-tea-perfectly-2026",
     "title": "Brewing Darjeeling loose leaf at home",
-    "description": "Water at 85 to 90\u00b0C, 2g of leaf per cup and 3 to 4 minutes. How to brew Darjeeling loose leaf, with or without milk, and avoid a bitter cup.",
+    "description": "Water at 85 to 90°C, 2g of leaf per cup and 3 to 4 minutes. How to brew Darjeeling loose leaf, with or without milk, and avoid a bitter cup.",
     "category": "Wellness",
     "href": "/blog/how-to-brew-darjeeling-tea-perfectly-2026"
   },
@@ -356,6 +356,15 @@ window.NT_BLOG_ARTICLES = [
     "description": "Glorenda and Healrize moringa patch reviews from Australian buyers, whether Chemist Warehouse stocks moringa weight loss patches, and what the research shows.",
     "category": "Wellness",
     "href": "/blog/moringa-patches-australia-review-do-they-work"
+  },
+  {
+    "slug": "moringa-powder-hair-growth-australia-2026",
+    "title": "Moringa Powder for Hair Growth in Australia",
+    "seoTitle": "Moringa Powder for Hair Growth Australia: What It Can & Cannot Do",
+    "description": "Moringa powder for hair growth in Australia? Searches are up 150% in 2026. It is not a hair-loss treatment. It is a food that adds iron, zinc, vitamin A and protein to your diet. NutriThrive leaf powder is $11 for 100g, packed in Truganina.",
+    "category": "Moringa",
+    "href": "/blog/moringa-powder-hair-growth-australia-2026",
+    "image": "/assets/images/og/moringa-article-1200.jpg"
   },
   {
     "slug": "moringa-powder-victoria-seniors-joint-health",

@@ -232,6 +232,12 @@ const approvedSeoChanges = {
   },
 };
 
+// Explicitly approved metadata changes for the seven-blog CTR cleanup.
+const moneyBlogSeo = JSON.parse(fs.readFileSync(path.join(ROOT, "storefront/content/money-blogs.json"), "utf8"));
+for (const [slug, { title, description }] of Object.entries(moneyBlogSeo)) {
+  approvedSeoChanges[`blog/${slug}.html`] = { ...approvedSeoChanges[`blog/${slug}.html`], title, description };
+}
+
 function resolveFile(rel) {
   if (rel.startsWith("netlify/") || rel.startsWith("scripts/")) {
     return path.join(ROOT, rel);
