@@ -3011,6 +3011,10 @@ body.journal-searching .section-head > a {
   line-height: 1.65;
 }
 
+.prose a {
+  overflow-wrap: anywhere;
+}
+
 .prose img {
   border-radius: var(--radius-md);
   margin: var(--space-5) 0;

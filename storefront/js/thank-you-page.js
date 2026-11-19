@@ -126,14 +126,15 @@
     };
 
     if (items.length && window.NT?.trackEcommerce) {
-      analyticsSent = window.NT.trackEcommerce("purchase", items, {
+      const purchaseParams = {
         transaction_id: orderId,
-        value: purchaseValue,
         tax: 0,
         shipping: shippingValue,
         transport_type: "beacon",
         event_callback: recordPurchase,
-      });
+      };
+      if (purchaseValue > 0) purchaseParams.value = purchaseValue;
+      analyticsSent = window.NT.trackEcommerce("purchase", items, purchaseParams);
     } else if (typeof window.gtag === "function") {
       const payload = {
         transaction_id: orderId,

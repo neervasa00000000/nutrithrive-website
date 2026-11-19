@@ -183,9 +183,9 @@
 /blog/how-much-moringa-powder-per-day-dosage-guide-2026 /404.html 410
 
 # Buyer guide cannibalization → canonical buyer guide
-# verify-moringa-quality — standalone checklist (restored Jul 2026 audit)
-/blog/verify-moringa-quality-premium-buyers-checklist-2026.html /blog/verify-moringa-quality-premium-buyers-checklist-2026 301!
-/blog/verify-moringa-quality-premium-buyers-checklist-2026 /blog/verify-moringa-quality-premium-buyers-checklist-2026.html 200
+# verify-moringa-quality — merged into the best-brands comparison
+/blog/verify-moringa-quality-premium-buyers-checklist-2026.html /blog/moringa-brands-comparison-australia-2026 301!
+/blog/verify-moringa-quality-premium-buyers-checklist-2026 /blog/moringa-brands-comparison-australia-2026 301!
 
 # Safety cannibalization → canonical buyer guide
 /blog/moringa-honest-truth-science-australia-2026.html /blog/how-to-choose-moringa-powder-australia-2026 301
@@ -238,10 +238,6 @@
 # Moringa + berberine guide (new June 2026 — +2,050% trending)
 /blog/moringa-and-berberine-australia-what-science-says-2026.html /blog/moringa-and-berberine-australia-what-science-says-2026 301!
 /blog/moringa-and-berberine-australia-what-science-says-2026 /blog/moringa-and-berberine-australia-what-science-says-2026.html 200
-
-# Moringa patches review (new June 2026)
-/blog/moringa-patches-australia-review-do-they-work.html /blog/moringa-patches-australia-review-do-they-work 301!
-/blog/moringa-patches-australia-review-do-they-work /blog/moringa-patches-australia-review-do-they-work.html 200
 
 # Rosabella review — live page (restored June 2026)
 /blog/rosabella-moringa-reviews-legit-or-overhyped-2026.html /blog/rosabella-moringa-reviews-legit-or-overhyped-2026 301!
@@ -907,8 +903,8 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/cortisol-belly-fat-couldnt-lose-stomach-melbourne-2026 /blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026 301!
 /blog/stress-weight-gain-cortisol-mechanism-what-to-do-2026.html /blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026 301!
 /blog/stress-weight-gain-cortisol-mechanism-what-to-do-2026 /blog/moringa-calm-mind-stress-brain-fog-cortisol-science-2026 301!
-/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026.html /blog/verify-moringa-quality-premium-buyers-checklist-2026 301!
-/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026 /blog/verify-moringa-quality-premium-buyers-checklist-2026 301!
+/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026.html /blog/moringa-brands-comparison-australia-2026 301!
+/blog/moringa-quality-test-shade-dried-vs-retail-australia-2026 /blog/moringa-brands-comparison-australia-2026 301!
 /blog/moringa-powder-complete-buyers-guide-australia-2026.html /products/moringa-powder/ 301!
 /blog/moringa-powder-complete-buyers-guide-australia-2026 /products/moringa-powder/ 301!
 
@@ -1005,6 +1001,16 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /blog/morning-routine-health-tips-australia-2026.html /blog/how-to-add-moringa-to-diet 301!
 /blog/morning-routine-health-tips-australia-2026 /blog/how-to-add-moringa-to-diet 301!
 
+# Kept above the storefront marker so a production rebuild does not drop them.
+/blog/how-to-build-balanced-plate-no-calorie-counting-2026 /404.html 410!
+/blog/how-to-build-balanced-plate-no-calorie-counting-2026.html /404.html 410!
+/blog/chemist-warehouse-greens-vs-moringa-powder-2026 /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301!
+/blog/chemist-warehouse-greens-vs-moringa-powder-2026.html /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301!
+/blog/stop-eating-ultra-processed-food-30-days-what-happens-2026 /blog/ultra-processed-food-australia-what-it-means-how-much-you-eat-2026 301!
+/blog/stop-eating-ultra-processed-food-30-days-what-happens-2026.html /blog/ultra-processed-food-australia-what-it-means-how-much-you-eat-2026 301!
+/blog/moringa-vs-spirulina-vs-matcha-comparison-australia /blog/ag1-alternative-australia-moringa-comparison-2026 301!
+/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html /blog/ag1-alternative-australia-moringa-comparison-2026 301!
+
 # === storefront production routes (keep ranking /blog URLs) ===
 /shop /products/ 301
 /shop/ /products/ 301
@@ -1031,21 +1037,3 @@ http://www.nutrithrive.com.au/* https://nutrithrive.com.au/:splat 301
 /privacy/ /pages/legal/privacy-policy.html 200
 /newsletter /pages/newsletter/ 301
 /newsletter/ /pages/newsletter/ 301
-
-# Blog cleanup 9 Nov 2026: 410 Gone + 301 consolidations
-/blog/how-much-water-per-day-australians-honest-guide-2026 /404.html 410!
-/blog/how-much-water-per-day-australians-honest-guide-2026.html /404.html 410!
-/blog/how-to-build-balanced-plate-no-calorie-counting-2026 /404.html 410!
-/blog/how-to-build-balanced-plate-no-calorie-counting-2026.html /404.html 410!
-/blog/seed-oils-bad-for-you-honest-research-australia-2026 /404.html 410!
-/blog/seed-oils-bad-for-you-honest-research-australia-2026.html /404.html 410!
-/blog/strength-training-women-over-35-why-it-matters-2026 /404.html 410!
-/blog/strength-training-women-over-35-why-it-matters-2026.html /404.html 410!
-/blog/musashi-protein-powder-australia-comprehensive-guide-2026 /404.html 410!
-/blog/musashi-protein-powder-australia-comprehensive-guide-2026.html /404.html 410!
-/blog/chemist-warehouse-greens-vs-moringa-powder-2026 /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301!
-/blog/chemist-warehouse-greens-vs-moringa-powder-2026.html /blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025 301!
-/blog/stop-eating-ultra-processed-food-30-days-what-happens-2026 /blog/ultra-processed-food-australia-what-it-means-how-much-you-eat-2026 301!
-/blog/stop-eating-ultra-processed-food-30-days-what-happens-2026.html /blog/ultra-processed-food-australia-what-it-means-how-much-you-eat-2026 301!
-/blog/moringa-vs-spirulina-vs-matcha-comparison-australia /blog/ag1-alternative-australia-moringa-comparison-2026 301!
-/blog/moringa-vs-spirulina-vs-matcha-comparison-australia.html /blog/ag1-alternative-australia-moringa-comparison-2026 301!

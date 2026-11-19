@@ -79,6 +79,68 @@ function trackShippingInfo() {
   }
 }
 
+function purchaseSentKey(transactionId) {
+  return "nt-purchase-sent-" + String(transactionId || "");
+}
+
+function purchaseAlreadySent(transactionId) {
+  if (!transactionId) return true;
+  try {
+    return Boolean(localStorage.getItem(purchaseSentKey(transactionId)));
+  } catch (err) {
+    return false;
+  }
+}
+
+function markPurchaseSent(transactionId) {
+  try {
+    localStorage.setItem(purchaseSentKey(transactionId), new Date().toISOString());
+  } catch (err) {
+    /* storage can be disabled; the thank-you page still dedupes in this tab */
+  }
+}
+
+function sendPurchaseFromApproval(transactionId, orderValue, shippingValue, items) {
+  if (!transactionId || purchaseAlreadySent(transactionId)) return false;
+  const value = Number(orderValue);
+  const shipping = Number.isFinite(Number(shippingValue)) ? Number(shippingValue) : 0;
+  const rows = (items || []).map(function (item) {
+    return {
+      id: item.id || item.sku,
+      name: item.name,
+      price: Number(item.price || 0),
+      quantity: Number(item.quantity || item.qty || 1),
+      variant: item.variant || "",
+    };
+  });
+  const extra = {
+    transaction_id: String(transactionId),
+    currency: "AUD",
+    tax: 0,
+    shipping: Number(shipping.toFixed(2)),
+    transport_type: "beacon",
+  };
+  if (Number.isFinite(value) && value > 0) extra.value = Number(value.toFixed(2));
+  let sent = false;
+  if (window.NT && typeof window.NT.trackEcommerce === "function") {
+    sent = window.NT.trackEcommerce("purchase", rows, extra) === true;
+  } else if (typeof window.gtag === "function") {
+    const payload = {
+      transaction_id: extra.transaction_id,
+      currency: "AUD",
+      tax: 0,
+      shipping: extra.shipping,
+      transport_type: "beacon",
+      items: rows,
+    };
+    if (extra.value) payload.value = extra.value;
+    window.gtag("event", "purchase", payload);
+    sent = true;
+  }
+  if (sent) markPurchaseSent(transactionId);
+  return sent;
+}
+
 function trackPaymentInfo(items, paymentType) {
   if (window._ntPaymentInfoSent) return;
   if (window.NT?.trackEcommerce?.("add_payment_info", items, { payment_type: paymentType || "PayPal" })) {
@@ -320,6 +382,7 @@ function finishApprovedPayment(data, captureToken, liveCart, options) {
       } catch (err) {
         console.warn("Purchase analytics snapshot could not be stored", err);
       }
+      sendPurchaseFromApproval(transactionId, orderValue, shippingValue, items);
       window.Cart.clear();
       const thankYouParams = new URLSearchParams({
         orderId: transactionId,

@@ -63,8 +63,8 @@ const approvedSeoChanges = {
     description: "AG1 is a multi-ingredient greens scoop. NutriThrive is plain farm-grown moringa leaf powder: compare purpose and format, then buy the pouch that fits.",
   },
   "blog/what-does-moringa-powder-taste-like-honest-guide-2026.html": {
-    title: "What Does Moringa Powder Taste Like? Honest Mix Guide",
-    description: "Does moringa powder taste bad? Earthy, grassy, mildly bitter. Straight in water most people dislike it — mix it and the flavour mostly disappears.",
+    title: "What Does Moringa Powder Taste Like? Honest Guide + How to Hide the Taste",
+    description: "Moringa powder tastes earthy and green, a bit like spinach, with a bitter finish. How to hide the taste in smoothies, yoghurt and soup, plus a 100g pouch for $11.",
   },
   "blog/natural-pre-workout-moringa-australia-2026.html": {
     title: "Moringa as a Natural Pre-Workout in Australia (2026)",
@@ -82,8 +82,11 @@ const approvedSeoChanges = {
     description: "Shade-dried vs sun-dried moringa powder in Australia: colour, aroma and heat clues that mark better leaf. How NutriThrive shade-dries before the $11/100g pack.",
   },
   "blog/moringa-brands-comparison-australia-2026.html": {
-    title: "Best Moringa Brands Australia 2026 Compared",
-    description: "Compare Australian moringa brands on lab testing, origin, processing, ingredients and $/100g. Clear checklist before you buy leaf powder in AU.",
+    title: "Best Moringa Powder Australia 2026 - Price Per 100g Compared",
+    description: "$11/100g vs $217/100g vs $132/100g. Best overall for value: NutriThrive. Price per 100g compared, checked 9 Nov 2026.",
+  },
+  "blog/moringa-capsules-vs-powder-which-is-better-2026.html": {
+    description: "$40 for 60 capsules at 500mg is 30g of leaf, about $1.33/g. NutriThrive at $11/100g is $0.11/g. Compare capsules vs powder in Australia.",
   },
   "blog/how-to-choose-moringa-powder-australia-2026.html": {
     title: "How to Choose Moringa Powder in Australia | Lab Checklist",
@@ -145,12 +148,12 @@ const approvedSeoChanges = {
     title: "Moringa While Breastfeeding: What Evidence Says (Australia)",
   },
   "blog/how-long-does-moringa-powder-last-storage-shelf-life-2026.html": {
-    title: "Does Moringa Powder Expire? Shelf Life and Storage",
-    description: "How long does moringa powder last in Australia? Unopened 12–24 months; opened ~18 months if sealed and cool, spring heat, fridge mistakes, Truganina pack dates.",
+    title: "How Long Does Moringa Powder Last? Shelf Life, Expiry & Storage in Australia",
+    description: "Does moringa powder expire? Yes. Use the best-before date unopened, and about a year once opened if you know how to store it cool, dry and dark.",
   },
   "blog/is-moringa-safe-for-children-kids-dosage-2026.html": {
-    title: "Is Moringa Safe for Kids in Australia? Dosage by Age",
-    description: "Is moringa safe for kids in Australia? Age-by-age powder doses, babies vs children, GP checkpoints, and food-level leaf use, with free AU shipping from $49.",
+    title: "Is Moringa Safe for Children? Kids Dosage & Safety Guide Australia",
+    description: "Is moringa safe for children? Keep it to small amounts of leaf powder in food, and talk to your GP before you give it. A parent guide for Australia.",
   },
   "blog/how-to-add-moringa-to-diet.html": {
     title: "How to Use Moringa Powder Daily (Eat, Mix &amp; Dose)",
@@ -165,8 +168,8 @@ const approvedSeoChanges = {
     description: "Rosabella moringa ships to Australia from Ohio. Its Australian prices on 9 Nov 2026, the Feb 2026 lot recall, what its reviews show, and a local pouch.",
   },
   "blog/moringa-chemist-warehouse-vs-nutrithrive-quality-test-2025.html": {
-    title: "Chemist Warehouse Moringa Capsules &amp; Tablets vs NutriThrive Powder",
-  description: "What Chemist Warehouse moringa costs per 100g of leaf, capsules vs tablets vs powder, dated Oct 2026. Leaf powder from $11/100g. Free AU shipping from $49.",
+    title: "Moringa Powder Chemist Warehouse vs NutriThrive $11 - Price Per 100g Compared",
+    description: "Chemist Warehouse capsules $132/100g vs NutriThrive powder $11/100g, NMI lab-tested, checked 9 Nov 2026. Compare the leaf, then try a pouch.",
   },
   "blog/moringa-wellness-shot-recipe-winter-2026.html": {
     title: "Moringa Shot Recipe: A Small Drink You Mix at Home",
@@ -236,6 +239,16 @@ function resolveFile(rel) {
   const siteFile = path.join(SITE_ROOT, rel);
   if (fs.existsSync(siteFile)) return siteFile;
   return path.join(ROOT, rel);
+}
+
+function isRedirectedBlog(rel) {
+  const slug = String(rel || "").replace(/^blog\//, "").replace(/\.html$/, "");
+  if (!slug || slug.includes("/")) return false;
+  const redirects = fs.readFileSync(path.join(SITE_ROOT, "_redirects"), "utf8");
+  return redirects.split("\n").some((line) => {
+    const parts = line.trim().split(/\s+/);
+    return parts[0] === `/blog/${slug}` && /^301!?$/.test(parts[2] || "");
+  });
 }
 
 function read(rel) {
@@ -308,6 +321,7 @@ try {
   errors.push(`could not read the SEO baseline from git: ${error.message}`);
 }
 for (const rel of trackedBlogs) {
+  if (!fs.existsSync(resolveFile(rel)) && isRedirectedBlog(rel)) continue;
   const before = seoFields(original(rel));
   const after = seoFields(read(rel));
   for (const field of ["title", "description", "canonical"]) {
@@ -353,6 +367,7 @@ const generatedHtml = [
   ...trackedBlogs.filter((rel) => !rel.includes("/partials/")),
 ];
 for (const rel of generatedHtml) {
+  if (!fs.existsSync(resolveFile(rel)) && isRedirectedBlog(rel)) continue;
   const html = read(rel);
   if (!html) continue;
   for (const match of html.matchAll(/<(?:img|script|link)\b[^>]*\s(?:src|href)=["'](\/assets\/[^"'?#]+)[^"']*["'][^>]*>/gi)) {
@@ -407,6 +422,7 @@ const startHere = [
   ["blog/ag1-alternative-australia-moringa-comparison-2026.html", "AG1 or plain moringa powder? A side-by-side", "$49"],
 ];
 for (const [rel, expected, postage] of startHere) {
+  if (!fs.existsSync(resolveFile(rel)) && isRedirectedBlog(rel)) continue;
   const html = read(rel);
   if (!html) continue;
   const h1 = html.match(/<h1[^>]*>([^<]*)<\/h1>/i)?.[1]?.replaceAll("&amp;", "&");
@@ -701,6 +717,7 @@ if (fs.existsSync(path.join(SITE_ROOT, "journal/how-to-add-moringa-to-diet/index
 
 for (const rel of trackedBlogs) {
   if (!/^blog\/[^/]+\.html$/.test(rel) || rel === "blog/index.html") continue;
+  if (!fs.existsSync(resolveFile(rel)) && isRedirectedBlog(rel)) continue;
   const html = read(rel);
   if (!html || /http-equiv=["']refresh["']/i.test(html) || /content=["']noindex/i.test(html)) continue;
   const description = normalizeMetaText(metaContent(html, "description") || "");

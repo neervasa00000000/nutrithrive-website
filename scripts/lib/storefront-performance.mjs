@@ -6,9 +6,11 @@ export function optimizeStorefrontLoading(html) {
   let out = html;
   const searchTag = /<script\b[^>]*\bsrc="(\/assets\/js\/storefront\/search-index(?:\.min)?\.js)(?:\?[^\"]*)?"[^>]*><\/script>\s*/g;
   if (searchTag.test(out)) {
+    searchTag.lastIndex = 0;
     out = out.replace(searchTag, '');
-    out = out.replace(/(<div\b[^>]*\bid="search-panel")([^>]*>)/, (match, start, rest) => rest.includes('data-search-index=') ? match : `${start} data-search-index="/assets/js/storefront/search-index.min.js?v=${PERFORMANCE_VERSION}"${rest}`);
   }
+  out = out.replace(/(<div\b[^>]*\bid="search-panel"[^>]*\bdata-search-index=")[^"]*(")/, `$1/assets/js/storefront/search-index.min.js?v=${PERFORMANCE_VERSION}$2`);
+  out = out.replace(/(<div\b[^>]*\bid="search-panel")(?![^>]*data-search-index=)([^>]*>)/, `$1 data-search-index="/assets/js/storefront/search-index.min.js?v=${PERFORMANCE_VERSION}"$2`);
   out = out.replace(/(src="\/assets\/js\/storefront\/site(?:\.min)?\.js)\?[^\"]*"/g, `$1?v=${PERFORMANCE_VERSION}"`);
   return out;
 }

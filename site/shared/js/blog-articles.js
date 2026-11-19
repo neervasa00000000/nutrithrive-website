@@ -453,7 +453,7 @@ window.NT_BLOG_ARTICLES = [
     "title": "Certified or farm-grown moringa: what to check",
     "description": "What a certification logo on a moringa label does and does not tell you, and what to check instead: lab tests, drying method and pack date.",
     "category": "Wellness",
-    "href": "/blog/verify-moringa-quality-premium-buyers-checklist-2026"
+    "href": "/blog/moringa-brands-comparison-australia-2026"
   },
   {
     "slug": "vitamin-d-deficiency-australia-abs-sunny-country-2026",
