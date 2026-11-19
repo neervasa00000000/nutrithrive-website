@@ -116,7 +116,7 @@ const approvedSeoChanges = {
   },
   "blog/moringa-before-after-workout-timing-guide-2026.html": {
     title: "Moringa Before or After Workout? Timing Guide (Australia)",
-  description: "Moringa before or after workout? Timing is habit, not performance. Leaf powder 100g $11, 200g $22, 400g $44. Free AU shipping from $49.",
+  description: "Moringa before or after workout? Timing is habit, not performance. Leaf powder 100g $11, 200g $22, 400g $40. Free AU shipping from $49.",
   },
   "blog/moringa-vs-whey-protein-comparison-2026.html": {
     title: "Moringa vs Whey Protein: Cost, Protein &amp; Everyday Use (AU)",
@@ -176,7 +176,7 @@ const approvedSeoChanges = {
     description: "A short recipe for a small moringa drink you mix at home with lemon and ginger. We sell the leaf powder only: 100g, 200g or 400g pouches.",
   },
   "blog/why-premium-moringa-costs-11-not-25-value-vs-markup-2026.html": {
-  description: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $44, with price per 100g. Free AU shipping from $49.",
+  description: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $40, with price per 100g. Free AU shipping from $49.",
   },
   "blog/afl-finals-snacks-curry-leaf-tadka.html": {
     description: "AFL finals snacks without party pies: curry-leaf tadka over nuts or popcorn. Dried kari leaf 30g from Truganina at $7, ready before Week 2 Thursday.",

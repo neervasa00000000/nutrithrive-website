@@ -28,7 +28,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
-const ASSET_VERSION = "20261119-shopping-2";
+const ASSET_VERSION = "20261119-price-40";
 const FONT_ASSET_VERSION = "20260831-7";
 const PAYMENT_ASSET_VERSION = "20261119-purchase-1";
 const CSS_ASSET_VERSION = "20261119-shopping-2";
@@ -437,10 +437,10 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "why-premium-moringa-costs-11-not-25-value-vs-markup-2026": {
     title: "Moringa Powder Price Australia (Dated $/100g)",
-    description: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $44, with price per 100g. Free AU shipping from $49.",
+    description: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $40, with price per 100g. Free AU shipping from $49.",
     h1: "Moringa Powder Price in Australia (Dated List Prices)",
     ogTitle: "Moringa Powder Price Australia: Dated List Prices",
-    ogDescription: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $44, with price per 100g. Free AU shipping from $49.",
+    ogDescription: "NutriThrive moringa powder prices as of 13 Oct 2026: 100g $11, 200g $22, 400g $40, with price per 100g. Free AU shipping from $49.",
     articleSection: "Moringa",
   },
   "high-protein-moringa-recipes-australia-2026": {
@@ -575,7 +575,7 @@ const ARTICLE_SEO_OVERRIDES = {
   },
   "moringa-before-after-workout-timing-guide-2026": {
     title: "Moringa Before or After Workout? Timing Guide (AU)",
-    description: "Moringa before or after workout? Timing is habit, not performance. Leaf powder 100g $11, 200g $22, 400g $44. Free AU shipping from $49.",
+    description: "Moringa before or after workout? Timing is habit, not performance. Leaf powder 100g $11, 200g $22, 400g $40. Free AU shipping from $49.",
     h1: "Moringa Before or After Workout? Timing Guide (AU)",
   },
   "how-much-caffeine-in-darjeeling-tea-vs-coffee-green-tea-2026": {
@@ -2091,7 +2091,7 @@ const PDP = {
       [
         "Why isn’t NutriThrive the cheapest moringa powder?",
         {
-          html: `We publish an <strong>NMI lab summary</strong>, sun-dry the leaf, and pack in Truganina. The 400g bundle is <strong>$44</strong> ($11/100g). Free AU shipping at <strong>$49</strong>.`,
+          html: `We publish an <strong>NMI lab summary</strong>, sun-dry the leaf, and pack in Truganina. The 400g bundle is <strong>$40</strong> ($10/100g). Free AU shipping at <strong>$49</strong>.`,
         },
       ],
       [
@@ -2618,8 +2618,8 @@ function pdpPage(slug, d) {
   const powder400 = PRODUCTS.find((item) => item.id === "moringa-400g");
   const under49Rate = auSoloShippingRate(powder100?.weight || 100);
   const freeShipFrom = (shippingCostNote().match(/\$\d+/) || ["$49"])[0];
-  if (mainPowder && (powder100?.price !== 11 || powder200?.price !== 22 || powder400?.price !== 44 || Math.round((powder400.price / 4) * 100) !== 1100 || under49Rate !== 9.69)) {
-    throw new Error(`Moringa powder prices or the under-$49 shipping rate differ from $11 / $22 / $44 ($11 per 100g) / $9.69. Stopped without changing prices. Got ${powder100?.price}, ${powder200?.price}, ${powder400?.price}, ${under49Rate}.`);
+  if (mainPowder && (powder100?.price !== 11 || powder200?.price !== 22 || powder400?.price !== 40 || Math.round((powder400.price / 4) * 100) !== 1000 || under49Rate !== 9.69)) {
+    throw new Error(`Moringa powder prices or the under-$49 shipping rate differ from $11 / $22 / $40 ($10 per 100g) / $9.69. Stopped without changing prices. Got ${powder100?.price}, ${powder200?.price}, ${powder400?.price}, ${under49Rate}.`);
   }
   const deliveredHtml = "";
   const buyOnline = "";
@@ -3805,7 +3805,7 @@ function melbournePage() {
     ["Do you have handmade soap in Melbourne?", "Yes, $7 for a 95g bar."],
     [
       "Do you sell moringa powder in Melbourne?",
-      "Yes. Sun-dried moringa leaf powder, 100g $11, 200g $22 or 400g $44, packed in Truganina. Delivery or pickup by arrangement.",
+      "Yes. Sun-dried moringa leaf powder, 100g $11, 200g $22 or 400g $40, packed in Truganina. Delivery or pickup by arrangement.",
     ],
   ];
   const faqSchema = {
@@ -4619,7 +4619,7 @@ function articleEndCta(slug) {
   if (slug === "moringa-vs-ashwagandha-comparison-2026") {
     return `<aside class="answer-box" aria-label="Moringa powder price">
       <h2>Price, if you want the leaf</h2>
-      <p>NutriThrive moringa leaf powder is $11 for 100g, $22 for 200g and $44 for 400g ($11 per 100g). Rosabella capsules were about $217/100g and Chemist Warehouse capsules about $132/100g when checked on 9 Nov 2026. ${price}. ${shop}. See <a href="/blog/moringa-brands-comparison-australia-2026">best moringa powder Australia</a>.</p>
+      <p>NutriThrive moringa leaf powder is $11 for 100g, $22 for 200g and $40 for 400g ($10 per 100g). Rosabella capsules were about $217/100g and Chemist Warehouse capsules about $132/100g when checked on 9 Nov 2026. ${price}. ${shop}. See <a href="/blog/moringa-brands-comparison-australia-2026">best moringa powder Australia</a>.</p>
     </aside>`;
   }
   if (slug === "why-premium-moringa-costs-11-not-25-value-vs-markup-2026") {
@@ -4891,7 +4891,7 @@ function articlePage(meta, prose, allArticles, liveSeo = null) {
           </div>
           <aside class="answer-box" aria-label="Patches compared with powder">
             <h2>Patches vs powder</h2>
-            <p>Patches vs powder: a patch is a small dose, powder is $0.11/g. NutriThrive <a href="/products/moringa-powder/">moringa powder $11</a> for 100g, and 400g is $44. <a href="/products/moringa-powder/">Shop moringa powder</a>, or read <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">moringa capsules vs powder</a>.</p>
+            <p>Patches vs powder: a patch is a small dose, powder is $0.11/g. NutriThrive <a href="/products/moringa-powder/">moringa powder $11</a> for 100g, and 400g is $40. <a href="/products/moringa-powder/">Shop moringa powder</a>, or read <a href="/blog/moringa-capsules-vs-powder-which-is-better-2026">moringa capsules vs powder</a>.</p>
           </aside>`
     : "";
   const dosageSchemas = meta.slug === "how-much-moringa-powder-per-day-dosage-guide"

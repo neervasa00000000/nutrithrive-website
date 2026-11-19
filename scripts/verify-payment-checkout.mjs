@@ -89,10 +89,10 @@ vm.runInNewContext(
   preloadContext,
 );
 await preloadContext.window.__loadApplePaySdk();
-paymentCart = { items: [{ id: 'moringa-400g', quantity: 4, price: 44 }] };
+paymentCart = { items: [{ id: 'moringa-400g', quantity: 4, price: 40 }] };
 paymentContext.window.__paymentTest.updateShippingAndTotal();
-assert.equal(paymentElements.get('total').textContent, '$176.00', 'no discount: four 400g pouches are charged at full price');
-assert.equal(paymentContext.window.__paymentTest.formatApplePayAmount(paymentCart), '176.00');
+assert.equal(paymentElements.get('total').textContent, '$160.00', 'no discount: four 400g pouches are charged at full price');
+assert.equal(paymentContext.window.__paymentTest.formatApplePayAmount(paymentCart), '160.00');
 assert.doesNotMatch(source, /discount/i, 'payment page must not apply any discount');
 for (const asset of [
   'runtime-paypal-client-config.min.js',
@@ -187,13 +187,13 @@ async function checkCart(items, expectedTotal, expectedShipping) {
 
 try {
   await checkCart([{ id: 'moringa-powder', quantity: 1 }], '20.69', '9.69');
-  await checkCart([{ id: 'moringa-400g', quantity: 1 }], '55.12', '11.12');
-  await checkCart([{ id: 'moringa-400g', quantity: 1 }, { id: 'curry-leaves', quantity: 1 }], '51.00', '0.00');
+  await checkCart([{ id: 'moringa-400g', quantity: 1 }], '51.12', '11.12');
+  await checkCart([{ id: 'moringa-400g', quantity: 1 }, { id: 'moringa-powder', quantity: 1 }], '51.00', '0.00');
   await checkCart([
     { id: 'moringa-400g', quantity: 2 },
     { id: 'moringa-powder', quantity: 1 },
-  ], '99.00', '0.00');
-  await checkCart([{ id: 'moringa-variation-1', quantity: 4 }], '176.00', '0.00');
+  ], '91.00', '0.00');
+  await checkCart([{ id: 'moringa-variation-1', quantity: 4 }], '160.00', '0.00');
   let appleOrderId;
   let appleCaptureToken;
   {
@@ -322,14 +322,14 @@ try {
   const savedCartContext = {
     window: catalogContext.window,
     CART_STORAGE_KEY: 'test-cart',
-    localStorage: { getItem: () => JSON.stringify({ items: [{ id: 'moringa-400g', price: 40, quantity: 2 }] }) },
+    localStorage: { getItem: () => JSON.stringify({ items: [{ id: 'moringa-400g', price: 44, quantity: 2 }] }) },
     console,
   };
   vm.runInNewContext(cartSource.slice(cartSource.indexOf('function getCart()'), cartSource.indexOf('// Save cart')) +
     cartSource.slice(cartSource.indexOf('function calculateCartTotals('), cartSource.indexOf('function trackRedditAddToCart(')) +
     ';this.savedCart = getCart();', savedCartContext);
-  assert.equal(savedCartContext.savedCart.items[0].price, 44);
-  assert.equal(savedCartContext.savedCart.total, 88);
+  assert.equal(savedCartContext.savedCart.items[0].price, 40);
+  assert.equal(savedCartContext.savedCart.total, 80);
   assert.equal(savedCartContext.savedCart.itemCount, 2);
   for (const product of catalogContext.window.NT_PRODUCTS) {
     const price = Number(product.price).toFixed(2);
