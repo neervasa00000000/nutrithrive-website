@@ -38,6 +38,15 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/best-plant-based-iron-foods-australia-absorption-guide-2026"
   },
   {
+    "slug": "best-time-to-take-moringa-powder-australia-2026",
+    "title": "Best Time to Take Moringa Powder in Australia: Morning, Empty Stomach or With Food?",
+    "seoTitle": "Best Time to Take Moringa Powder in Australia: Morning, Empty Stomach or With Food?",
+    "description": "Best time to take moringa powder in Australia? Morning with breakfast works for most. Simple routine, $11 for 100g, and what to avoid.",
+    "category": "Moringa",
+    "href": "/blog/best-time-to-take-moringa-powder-australia-2026",
+    "image": "/assets/images/product_webp/moringa-powder-texture.webp"
+  },
+  {
     "slug": "blood-sugar-spikes-how-to-avoid-through-food-2026",
     "title": "Eating to avoid big blood sugar spikes",
     "description": "Food habits that help avoid big blood sugar spikes after meals: eating order, fibre, protein and a short walk. General information; see your GP.",
@@ -385,6 +394,24 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/moringa-patches-australia-review-do-they-work"
   },
   {
+    "slug": "moringa-powder-for-men-australia-2026",
+    "title": "Moringa Powder for Men Australia: Energy, Iron & How to Use It",
+    "seoTitle": "Moringa Powder for Men Australia: Energy, Iron & How to Use It",
+    "description": "Moringa powder for men in Australia: food uses, nutrient limits and when tiredness needs a GP check. Measuring tips and prices from $11/100g.",
+    "category": "Moringa",
+    "href": "/blog/moringa-powder-for-men-australia-2026",
+    "image": "/assets/images/product_webp/moringa-powder-texture.webp"
+  },
+  {
+    "slug": "moringa-powder-for-skin-australia-2026",
+    "title": "Moringa Powder for Skin Australia: Face Mask, Glow & What It Can & Cannot Do",
+    "seoTitle": "Moringa Powder for Skin Australia: Face Mask, Glow & What It Can & Cannot Do",
+    "description": "Moringa powder for skin in Australia: food versus cosmetics, face-mask limitations, irritation risks and what a food-grade pouch does not prove.",
+    "category": "Moringa",
+    "href": "/blog/moringa-powder-for-skin-australia-2026",
+    "image": "/assets/images/product_webp/moringa-powder-texture.webp"
+  },
+  {
     "slug": "moringa-powder-hair-growth-australia-2026",
     "title": "Moringa Powder for Hair Growth in Australia",
     "seoTitle": "Moringa Powder for Hair Growth Australia: What It Can & Cannot Do",
@@ -400,6 +427,15 @@ window.NT_BLOG_ARTICLES = [
     "description": "Moringa powder for iron deficiency in Australia? Leaf powder adds iron and vitamin C as food. $11 for 100g. Not a treatment — see your GP first.",
     "category": "Moringa",
     "href": "/blog/moringa-powder-iron-deficiency-australia-2026",
+    "image": "/assets/images/product_webp/moringa-powder-texture.webp"
+  },
+  {
+    "slug": "moringa-powder-smoothie-recipes-australia-2026",
+    "title": "Moringa Powder Smoothie Recipes Australia: 5 Easy Ones That Actually Taste Good",
+    "seoTitle": "Moringa Powder Smoothie Recipes Australia: 5 Easy Ones That Actually Taste Good",
+    "description": "Five moringa powder smoothie recipes for Australia: banana, mango, berries, greens and chocolate. Taste tips and measured-cost examples from $11/100g.",
+    "category": "Moringa",
+    "href": "/blog/moringa-powder-smoothie-recipes-australia-2026",
     "image": "/assets/images/product_webp/moringa-powder-texture.webp"
   },
   {
@@ -429,6 +465,15 @@ window.NT_BLOG_ARTICLES = [
     "description": "Moringa soap, $7 for a 95g bar. Moringa soap benefits for skin mean a plain wash, not a treatment. Free AU shipping from $49.",
     "category": "Wellness",
     "href": "/blog/moringa-soap-benefits-skin-guide"
+  },
+  {
+    "slug": "moringa-tablets-vs-powder-australia-2026",
+    "title": "Moringa Tablets vs Powder Australia: Price Per 100g Compared",
+    "seoTitle": "Moringa Tablets vs Powder Australia: Price Per 100g Compared",
+    "description": "Moringa tablets vs powder in Australia, compared on price per 100g. NutriThrive powder is $11 for 100g — see the maths before you buy.",
+    "category": "Moringa",
+    "href": "/blog/moringa-tablets-vs-powder-australia-2026",
+    "image": "/assets/images/product_webp/moringa-powder-texture.webp"
   },
   {
     "slug": "moringa-vs-coffee-melbourne-energy-hack",
