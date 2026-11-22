@@ -30,7 +30,8 @@ const SITE = path.join(ROOT, "site");
 const OUT = __dirname;
 const ASSET_VERSION = "20261119-price-40";
 const FONT_ASSET_VERSION = "20260831-7";
-const PAYMENT_ASSET_VERSION = "20261119-purchase-1";
+const PAYMENT_ASSET_VERSION = "20261122-paypal-fix";
+const THANK_YOU_ASSET_VERSION = "20261121-meta-1";
 const CSS_ASSET_VERSION = "20261119-shopping-2";
 const CART_CSS_ASSET_VERSION = "20261023-engagement-1";
 const LIVE_MODE = process.env.STOREFRONT_PRODUCTION === "1";
@@ -1751,6 +1752,23 @@ ${refined ? "" : '<link rel="preload" href="/assets/fonts/fraunces-latin-500-600
   <script type="application/ld+json" id="nutri-thrive-local-business-jsonld">${JSON.stringify(ORG_SCHEMA)}</script>
   ${liveAnalytics}
   ${extraHead}
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '872902262407535');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=872902262407535&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body${refined ? ' class="storefront-refined"' : ""}>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -1882,6 +1900,9 @@ function writePage(rel, html, destRoot = OUT) {
         : assetPath === "/assets/js/storefront/payment-page.js" ||
             assetPath === "/assets/js/storefront/payment-page.min.js"
           ? PAYMENT_ASSET_VERSION
+        : assetPath === "/assets/js/storefront/thank-you-page.js" ||
+            assetPath === "/assets/js/storefront/thank-you-page.min.js"
+          ? THANK_YOU_ASSET_VERSION
         : ASSET_VERSION;
       return `${attribute}="${assetPath}?v=${version}"`;
     }

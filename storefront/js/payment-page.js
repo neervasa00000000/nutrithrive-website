@@ -214,11 +214,31 @@ function loadPayPalSdkForCheckout() {
   return window.ntLoadPayPalSdk(paypalSdkParams());
 }
 
+function knownProductIds() {
+  const catalog = Array.isArray(window.NT_PRODUCTS) ? window.NT_PRODUCTS : [];
+  const ids = new Set(catalog.map(function (product) {
+    return String(product && product.id || "").trim();
+  }).filter(Boolean));
+  // Legacy variation ids still accepted by paypal-create-order.
+  for (let i = 1; i <= 6; i += 1) ids.add("moringa-variation-" + i);
+  return ids;
+}
+
+function sanitizeCheckoutCart(cart) {
+  const source = cart && Array.isArray(cart.items) ? cart.items : [];
+  const allowed = knownProductIds();
+  const items = source.filter(function (item) {
+    const id = String(item && item.id || "").trim();
+    return id && (allowed.size === 0 || allowed.has(id));
+  });
+  return { items: items };
+}
+
 function buildOrderItems(cart) {
   return (cart.items || [])
     .map(function (item) {
       const id = String(item.id || "").trim();
-      const quantity = parseInt(item.quantity || 1, 10);
+      const quantity = parseInt(item.quantity || item.qty || 1, 10);
       if (!id || !Number.isFinite(quantity) || quantity < 1) return null;
       return { id: id, quantity: quantity };
     })
@@ -269,13 +289,30 @@ function mapAppleShippingContact(contact) {
   return mapped;
 }
 
+function readJsonResponse(res) {
+  return res.text().then(function (text) {
+    if (!text) return { ok: res.ok, data: {} };
+    try {
+      return { ok: res.ok, data: JSON.parse(text) };
+    } catch (err) {
+      throw new Error(
+        res.ok
+          ? "Payment response was invalid. Please try again."
+          : "Payment is temporarily unavailable. Please try again."
+      );
+    }
+  });
+}
+
 function createPayPalOrder(options) {
   options = options || {};
-  const liveCart = getCart();
+  const liveCart = sanitizeCheckoutCart(getCart());
   const liveCountry = options.countryCode || getSelectedCountryCode();
   const orderItems = buildOrderItems(liveCart);
   if (!orderItems.length) {
-    return Promise.reject(new Error("Your cart is empty."));
+    return Promise.reject(
+      new Error("Your cart has no valid products. Clear the cart and add items again.")
+    );
   }
   if (!liveCountry) {
     return Promise.reject(new Error("Select a shipping country to continue."));
@@ -293,13 +330,15 @@ function createPayPalOrder(options) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   })
-    .then(function (res) {
-      return res.json().then(function (data) {
-        return { ok: res.ok, data: data };
-      });
-    })
+    .then(readJsonResponse)
     .then(function (result) {
       if (!result.ok) throw new Error(result.data.error || "Failed to create order");
+      if (!result.data.orderID && !result.data.id) {
+        throw new Error("PayPal did not return an order ID.");
+      }
+      if (!result.data.captureToken) {
+        throw new Error("Payment could not be secured. Please try again.");
+      }
       return {
         orderID: result.data.orderID || result.data.id,
         captureToken: result.data.captureToken,
@@ -310,22 +349,27 @@ function createPayPalOrder(options) {
 
 function finishApprovedPayment(data, captureToken, liveCart, options) {
   options = options || {};
+  const orderID = data && (data.orderID || data.id);
+  if (!orderID) {
+    return Promise.reject(new Error("Missing PayPal order ID."));
+  }
+  if (!captureToken || typeof captureToken !== "string") {
+    return Promise.reject(
+      new Error("Payment session expired. Close PayPal and tap the button again.")
+    );
+  }
   return fetch("/.netlify/functions/paypal-capture-order", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ orderID: data.orderID || data.id, captureToken: captureToken }),
+    body: JSON.stringify({ orderID: orderID, captureToken: captureToken }),
   })
-    .then(function (res) {
-      return res.json().then(function (payload) {
-        return { ok: res.ok, payload: payload };
-      });
-    })
+    .then(readJsonResponse)
     .then(function (result) {
-      if (!result.ok) throw new Error(result.payload.error || "Payment failed");
+      if (!result.ok) throw new Error(result.data.error || "Payment failed");
       const items = (liveCart && liveCart.items) || [];
       const qty =
         items.reduce(function (sum, item) {
-          return sum + (parseInt(item.quantity || 1, 10) || 1);
+          return sum + (parseInt(item.quantity || item.qty || 1, 10) || 1);
         }, 0) || 1;
       const itemName =
         items.length === 1
@@ -344,7 +388,7 @@ function finishApprovedPayment(data, captureToken, liveCart, options) {
           orderValue = parsedTotal;
         }
       }
-      const capture = result.payload || {};
+      const capture = result.data || {};
       let captureAmount =
         capture.purchase_units &&
         capture.purchase_units[0] &&
@@ -364,9 +408,10 @@ function finishApprovedPayment(data, captureToken, liveCart, options) {
       if (captureAmount) {
         orderValue = parseFloat(captureAmount) || orderValue;
       }
-      const transactionId = String(data.orderID || data.id || "");
+      const transactionId = String(orderID || "");
       const subtotalValue = computeSubtotal(items);
       const shippingValue = Math.max(0, Number((orderValue - subtotalValue).toFixed(2)));
+      // Capture already succeeded — never turn fulfilment/analytics failures into a payment error.
       try {
         sessionStorage.setItem(
           "nt-purchase-snapshot",
@@ -382,8 +427,16 @@ function finishApprovedPayment(data, captureToken, liveCart, options) {
       } catch (err) {
         console.warn("Purchase analytics snapshot could not be stored", err);
       }
-      sendPurchaseFromApproval(transactionId, orderValue, shippingValue, items);
-      window.Cart.clear();
+      try {
+        sendPurchaseFromApproval(transactionId, orderValue, shippingValue, items);
+      } catch (err) {
+        console.warn("Purchase analytics could not be sent", err);
+      }
+      try {
+        if (window.Cart && typeof window.Cart.clear === "function") window.Cart.clear();
+      } catch (err) {
+        console.warn("Cart could not be cleared after payment", err);
+      }
       const thankYouParams = new URLSearchParams({
         orderId: transactionId,
         value: String(orderValue),
@@ -864,19 +917,26 @@ function initPayPal() {
 
   setStatus("");
   hideApplePayButton();
-  let captureToken = null;
+  // Per-order tokens: PayPal + card buttons share this config; a single
+  // `let captureToken` can be overwritten if both funding sources create orders.
+  const captureTokensByOrder = Object.create(null);
+  const checkoutCartsByOrder = Object.create(null);
   const config = {
     createOrder: function () {
       return createPayPalOrder({
         countryCode: getSelectedCountryCode() || countryCode,
         paymentType: "PayPal",
       }).then(function (created) {
-        captureToken = created.captureToken;
+        captureTokensByOrder[created.orderID] = created.captureToken;
+        checkoutCartsByOrder[created.orderID] = created.cart;
         return created.orderID;
       });
     },
     onApprove: function (data) {
-      return finishApprovedPayment(data, captureToken, getCart()).catch(function (err) {
+      const orderID = data && (data.orderID || data.id);
+      const token = orderID ? captureTokensByOrder[orderID] : null;
+      const approvedCart = (orderID && checkoutCartsByOrder[orderID]) || sanitizeCheckoutCart(getCart());
+      return finishApprovedPayment(data, token, approvedCart).catch(function (err) {
         setStatus("Payment error: " + err.message, true);
       });
     },

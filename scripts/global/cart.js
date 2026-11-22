@@ -41,14 +41,23 @@ function getCart() {
         const cartData = localStorage.getItem(CART_STORAGE_KEY);
         const cart = cartData ? JSON.parse(cartData) : null;
         // Saved baskets may predate a price or product-name update.
+        // Drop unknown SKUs — they cause PayPal "Invalid item id" at checkout.
         if (cart && Array.isArray(cart.items) && Array.isArray(window.NT_PRODUCTS)) {
+            const before = cart.items.length;
             cart.items = cart.items.map(item => {
                 const product = window.NT_PRODUCTS.find(product => product.id === item.id);
                 return product ? { ...item, price: product.price, name: product.name,
                     weight: product.weight, image: product.image, href: product.href,
-                    variant: product.variant } : item;
-            });
+                    variant: product.variant } : null;
+            }).filter(Boolean);
             calculateCartTotals(cart);
+            if (cart.items.length !== before) {
+                try {
+                    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+                } catch (persistErr) {
+                    /* ignore quota / private mode */
+                }
+            }
         }
         return cart;
     } catch (e) {
