@@ -358,5 +358,41 @@
     "image": "/assets/images/product_webp/moringa-powder-texture.webp",
     "ctaHtml": "<p class=\"article-next-step\"><a href=\"/products/moringa-powder/\">View moringa leaf powder — 100g $11</a></p>",
     "disclaimerHtml": ""
+  },
+  "curry-leaf-plant-yellow-winter-australia": {
+    "title": "Your Curry Leaf Plant Isn't Dead: Why It Yellows in a Cold Winter",
+    "h1": "Your Curry Leaf Plant Isn't Dead",
+    "description": "Why a curry leaf plant yellows in a cold Australian winter, how to tell rest from rot or iron chlorosis, and when the leaves come back.",
+    "bylineHtml": "By <a href=\"/about#founder\" rel=\"author\">Neer Vasa, NutriThrive founder</a> · Published <time datetime=\"2026-11-26\">26 November 2026</time>",
+    "shortAnswerHtml": "<div class=\"answer-box\"><p><strong>Short answer</strong></p><p>In a cold-winter city like Melbourne, Canberra or the Adelaide Hills, yellow leaves and winter leaf drop are usually the cold. Curry leaf, <em>Murraya koenigii</em>, is a tropical plant. If the stems are still alive, it is most likely resting, and new leaves tend to arrive once nights warm up, often between September and November.</p><p>The two problems that look similar are soggy roots from winter watering, and iron chlorosis, which shows as yellow new leaves with green veins. While the plant rests, cook with whole <a href=\"/products/curry-leaves/\">dried curry leaves, 30g for $7</a>, instead of picking the yellow ones.</p></div>",
+    "source": "new-blogs/curry-leaf-plant-yellow-winter-australia.html",
+    "published": "2026-11-26",
+    "modified": "2026-11-26",
+    "faqs": [
+      [
+        "Why do curry leaf plants turn yellow in winter?",
+        "In a cold winter, yellow leaves and leaf drop are usually the plant resting. Curry leaf is tropical. If the stems are still alive, new leaves tend to come once nights warm up, often between September and November."
+      ],
+      [
+        "Is my curry leaf plant dead or just dormant?",
+        "If the stems are still alive, it is almost certainly resting. Scrape a thin sliver of bark. Green and slightly moist means that stem is alive. Brown and dry means that part has died, so try closer to the base."
+      ],
+      [
+        "When do curry leaf leaves come back?",
+        "Leaves grow back in spring, once nights warm up. One Melbourne grower expects them between September and November. A cold, late spring pushes that later."
+      ],
+      [
+        "What else turns curry leaves yellow?",
+        "Wet roots and iron chlorosis. Wet soil while the plant is resting can cause root rot. Iron chlorosis shows first on new leaves, which turn yellow while the veins stay green."
+      ],
+      [
+        "Can you cook with yellow curry leaves?",
+        "Pick the greenest leaves you have and leave a resting plant alone. Fresh leaves have the most aroma. Dried leaves are the practical option while the plant is bare."
+      ]
+    ],
+    "disclaimerHtml": "",
+    "category": "Curry leaves",
+    "image": "/assets/images/product_webp/dried-curry-leaves-texture.webp",
+    "ctaHtml": "<p class=\"article-next-step\"><a href=\"/products/curry-leaves/\">Dried curry leaves, 30g for $7</a></p>"
   }
 }

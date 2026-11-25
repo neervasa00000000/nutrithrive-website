@@ -75,6 +75,15 @@ window.NT_BLOG_ARTICLES = [
     "href": "/blog/cant-lose-weight-broken-gut-what-actually-worked-2026"
   },
   {
+    "slug": "curry-leaf-plant-yellow-winter-australia",
+    "title": "Your Curry Leaf Plant Isn't Dead",
+    "seoTitle": "Your Curry Leaf Plant Isn't Dead: Why It Yellows in a Cold Winter",
+    "description": "Why a curry leaf plant yellows in a cold Australian winter, how to tell rest from rot or iron chlorosis, and when the leaves come back.",
+    "category": "Curry Leaves",
+    "href": "/blog/curry-leaf-plant-yellow-winter-australia",
+    "image": "/assets/images/product_webp/dried-curry-leaves-texture.webp"
+  },
+  {
     "slug": "curry-leaf-podi-recipe-dried-curry-leaves",
     "title": "Curry leaf podi with dried leaves",
     "description": "Make curry leaf podi from dried curry leaves: roasted dal, chilli and garlic ground into a powder for rice, idli and dosa. Keeps for weeks.",

@@ -5091,7 +5091,11 @@ function articleImage(article) {
 }
 
 function emit(rel, html, liveRel = rel) {
-  writePage(LIVE_MODE ? liveRel : rel, html, LIVE_MODE ? SITE : OUT);
+  const targetRel = LIVE_MODE ? liveRel : rel;
+  // The live payment page is maintained with its own checkout script versions.
+  // A production rebuild must not restamp those URLs.
+  if (LIVE_MODE && targetRel === "pages/shop/payment.html" && fs.existsSync(path.join(SITE, targetRel))) return;
+  writePage(targetRel, html, LIVE_MODE ? SITE : OUT);
 }
 
 function writeGeneratedJs(search) {
